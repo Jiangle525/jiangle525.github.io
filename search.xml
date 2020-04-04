@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>3-hexo快捷键说明</title>
+      <link href="/2020/04/05/3-hexo%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%B4%E6%98%8E/"/>
+      <url>/2020/04/05/3-hexo%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%B4%E6%98%8E/</url>
+      
+        <content type="html"><![CDATA[<p>暂无</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> 快捷键 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>xmind 8白嫖（破解）教程</title>
+      <link href="/2020/04/04/xmind%208%E7%99%BD%E5%AB%96%EF%BC%88%E7%A0%B4%E8%A7%A3%EF%BC%89%E6%95%99%E7%A8%8B/"/>
+      <url>/2020/04/04/xmind%208%E7%99%BD%E5%AB%96%EF%BC%88%E7%A0%B4%E8%A7%A3%EF%BC%89%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="如何白嫖xmind-8-？"><a href="#如何白嫖xmind-8-？" class="headerlink" title="如何白嫖xmind 8 ？"></a>如何白嫖xmind 8 ？</h1><blockquote><p>仅供学习交流使用，请支持正版，谢谢合作（白嫖，它不香么？）</p></blockquote><h1 id="1-在官网下载xmind最新的版本，安装软件"><a href="#1-在官网下载xmind最新的版本，安装软件" class="headerlink" title="1.在官网下载xmind最新的版本，安装软件"></a>1.在官网下载xmind最新的版本，安装软件</h1><p>官网地址：<a href="https://www.xmind.cn/download/xmind8" target="_blank" rel="noopener">https://www.xmind.cn/download/xmind8</a><br>本文用的是XMind 8 Update 9</p><h1 id="2-下载软件包"><a href="#2-下载软件包" class="headerlink" title="2.下载软件包"></a>2.下载软件包</h1><p>链接：<code>https://pan.baidu.com/s/1bOzNQOPBI-cjV39uUUsdtA</code><br>提取码：<code>j6li</code> </p><h1 id="3-找到安装目录"><a href="#3-找到安装目录" class="headerlink" title="3. 找到安装目录"></a>3. 找到安装目录</h1><p>本文的是：<code>D:\Program Files (x86)\XMind</code><br>如果找不到，可以通过鼠标右键xmind图标–&gt;打开文件所在位置<br><img src="/img/%E6%9F%A5%E6%89%BExmind%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE.png" alt="查找xmind安装位置"></p><h1 id="4-打开我分享的文件"><a href="#4-打开我分享的文件" class="headerlink" title="4.打开我分享的文件"></a>4.打开我分享的文件</h1><p><img src="/img/%E6%9F%A5%E6%89%BExmind%E7%A0%B4%E8%A7%A3%E6%96%87%E4%BB%B6.png" alt="查找xmind破解文件"><br>找到这个<code>.jar</code>的文件，复制到xmind的安装目录（第3步中的安装路径）</p><h1 id="5-修改xmind配置文件-xmind-ini"><a href="#5-修改xmind配置文件-xmind-ini" class="headerlink" title="5.修改xmind配置文件(xmind.ini)"></a>5.修改xmind配置文件(xmind.ini)</h1><p> 在安装目录下，找到xmind.ini文件，用记事本打开<br> 在最后<strong>添加一句代码</strong></p><pre><code class="bash">-javaagent:D:\Program Files(x86)\XMind\XMindCrack.jar</code></pre><p>并<strong>保存文件</strong><br><strong>注意：</strong> <code>-javaagent:</code>后面为<code>XMindCrack.jar</code>文件的路径，<strong>冒号要使用英文</strong></p><h1 id="6-打开安装后的xmind"><a href="#6-打开安装后的xmind" class="headerlink" title="6.打开安装后的xmind"></a>6.打开安装后的xmind</h1><p>在<strong>菜单栏</strong>找到 “帮助” –&gt; “序列号”，填写<strong>邮箱</strong>和<strong>序列号</strong><br>邮箱随便填写一个正确的格式，也可以填写你自己的邮箱<br>打开我分享的文件<code>xmind激活序列号.txt</code>，复制粘贴上去<br><img src="/img/%E8%8E%B7%E5%8F%96xmind%E6%BF%80%E6%B4%BB%E5%BA%8F%E5%88%97%E5%8F%B7.png" alt="获取xmind激活序列号"></p><p><strong>激活成功<br>放肆的使用吧！</strong></p><p><strong>PS：</strong></p><p>仅供学习交流使用，任何人不得以商业盈利为目的，否则一切责任自己承担！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 白嫖系列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+            <tag> 白嫖 </tag>
+            
+            <tag> 破解 </tag>
+            
+            <tag> tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo安装教程</title>
+      <link href="/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+      <url>/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>安装hexo之前，需要安装下列应用程序：</p><ul><li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li><li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2>Windows：下载并安装 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git(官网)</a>或者<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝 Git for Windows 镜像</a><br>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">Homebrew</a>, <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">MacPorts</a> 或者下载<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">安装程序</a>。<br>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code><br>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2></li><li>Node.js 为大多数平台提供了官方的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">安装程序</a>。对于中国大陆地区用户，可以前往<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>下载。<ul><li>安装选项还是全部默认，只不过最后一步添加路径时选择<code>Use Git from the Windows Command Prompt</code>，这样我们就可以直接在命令提示符里打开Git了</li><li>安装完成后在命令提示符中输入<code>git --version</code>验证是否安装成功。</li></ul></li></ul><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><p>安装必备应用程序后，即可使用<code>npm</code>（你配吗hahaha开个玩笑）安装hexo</p><pre><code class="bash">$ npm install -g hexo-cli</code></pre><h1 id="进阶使用-hexo"><a href="#进阶使用-hexo" class="headerlink" title="进阶使用 hexo"></a>进阶使用 hexo</h1><p>安装后，可以使用两种方式执行hexo：</p><ul><li><code>npx hexo &lt;命令&gt;</code></li><li>将 hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;命令&gt;</code>：</li></ul><pre><code class="bash">echo &#39;PATH=&quot;$PATH:./node_modules/.bin&quot;&#39; &gt;&gt; ~/.profile</code></pre><h1 id="hexo真香！"><a href="#hexo真香！" class="headerlink" title="hexo真香！"></a>hexo真香！</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
