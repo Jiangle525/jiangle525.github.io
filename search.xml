@@ -8,7 +8,7 @@
       <link href="/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"/>
       <url>/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
       
-        <content type="html"><![CDATA[<hr><h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><ol><li>学习Linux的内核的系统调用。</li><li>理解、掌握Linux系统调用的实现框架、用户界面、参数传递、进入/返回过程。</li></ol><h1 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h1><p>在系统调用中添加一个不用传递参数的系统调用，实现一个简单的系统调用的添加。执行这个系统调用，在屏幕上显示输出“Hello World! ”。</p><hr><h1 id="二、实验环境"><a href="#二、实验环境" class="headerlink" title="二、实验环境"></a>二、实验环境</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p><hr><h1 id="三、操作方法和步骤"><a href="#三、操作方法和步骤" class="headerlink" title="三、操作方法和步骤"></a>三、操作方法和步骤</h1><h2 id="（1）下载软件包，并解压"><a href="#（1）下载软件包，并解压" class="headerlink" title="（1）下载软件包，并解压"></a>（1）下载软件包，并解压</h2><p>1.下载地址：<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a><br>可以通过<code>Ctrl+F</code>快速查找<br>2.使用<code>tar</code>命令解压文件到/usr/src目录下。执行命令：</p><pre><code class="bash">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre><p>3.解压之后，切换工作目录到<code>/usr/src/linux-4.15.10/</code>，可以是用<code>Tab</code>键补全路径。执行命令：</p><pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre><p>4.后面操作大部分都需要root权限，使用<code>su</code>命令切换用户，输入密码时不会显示。执行命令：</p><pre><code class="bash">su root</code></pre><h2 id="（2）修改源程序，增加系统调用"><a href="#（2）修改源程序，增加系统调用" class="headerlink" title="（2）修改源程序，增加系统调用"></a>（2）修改源程序，增加系统调用</h2><p><strong>小提示：</strong> 在vim编辑器里，<code>i</code>字母插入，按<code>esc</code>后输入<code>:wq</code>保存并退出，<code>q!</code>强制退出</p><p>1.使用vim编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code>文件，添加系统调用号，在普通模式下，<code>shift+g</code>或者<code>G</code>可以直接定位到文尾。执行命令：</p><pre><code class="bash">vim arch/x86/entry/syscalls/syscall_64.tbl</code></pre><p>添加两个没有使用(unuse)的系统调用号，其他格式可以参考文件中的其他系统调用，这里我添加了两个系统调用。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406232920550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加系统调用号">2.使用vim编辑<code>include/linux/syscalls.h</code>文件，添加原型声明。执行命令：</p><pre><code class="bash">vim include/linux/syscalls.h</code></pre><p>不传递参数的时候，void也不能漏写。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233121458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加原型声明"><br>3.使用vim编辑<code>kernel/sys.c</code>文件，实现具体的系统调用。执行命令：</p><pre><code class="bash">vim kernel/sys.c</code></pre><p>代码打一遍印象深刻一些，GoGoGo！代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233418258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="系统调用的实现"></p><hr><h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><p>这里就不详细说明了，请参考<a href="https://blog.csdn.net/qq_45116009/article/details/105325871" target="_blank" rel="noopener">Linux发行版 CentOS编译内核</a></p><hr><h2 id="（4）测试系统调用"><a href="#（4）测试系统调用" class="headerlink" title="（4）测试系统调用"></a>（4）测试系统调用</h2><p>1.使用vim命令创建测试文件<code>mysyscall.c</code>和<code>mycall.c</code>，下面以mysyscall.c的创建和测试为例。执行命令：</p><pre><code class="bash">vim mysyscall.c</code></pre><p><img src="https://img-blog.csdnimg.cn/20200406233820378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="测试mysyscall"><br>2.使用gcc编译c程序文件<br><em>编译的四个阶段</em></p><ul><li>-E：仅执行编译预处理</li><li>-c：仅执行编译操作，不进行连接操作</li><li>-S：将C代码转换为汇编代码</li><li>-o：指定生成的输出文件</li></ul><p>直接使用<code>gcc -o</code>生成指定输出文件。执行命令：</p><pre><code class="bash">gcc -o mysyscall_test mysyscall_test.c   #使用gcc编译</code></pre><p>运行可执行文件，执行命令：</p><pre><code class="bash">./mysyscall_test        # 运行可执行文件</code></pre><p><img src="https://img-blog.csdnimg.cn/20200406234708504.png" alt="gcc编译测试文件并执行"><br>使用<code>dmesg</code>查看printk的输出情况。执行命令：</p><pre><code class="bash">dmesg</code></pre><p><img src="https://img-blog.csdnimg.cn/2020040623462720.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="dmesg输出情况"><br>系统调用的<strong>返回值</strong>和<strong>printk的输出</strong>均符合预期，系统调用成功添加了！</p><hr><h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><ul><li>两个字高度概括，<strong>简单！</strong></li><li>剩下的你们自己慢慢写吧，有问题欢迎在留言区交流，谢谢观看。</li></ul>]]></content>
+        <content type="html"><![CDATA[<hr><h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><ol><li>学习Linux的内核的系统调用。</li><li>理解、掌握Linux系统调用的实现框架、用户界面、参数传递、进入/返回过程。</li></ol><h1 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h1><p>在系统调用中添加一个不用传递参数的系统调用，实现一个简单的系统调用的添加。执行这个系统调用，在屏幕上显示输出“Hello World! ”。</p><hr><h1 id="二、实验环境"><a href="#二、实验环境" class="headerlink" title="二、实验环境"></a>二、实验环境</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p><hr><h1 id="三、操作方法和步骤"><a href="#三、操作方法和步骤" class="headerlink" title="三、操作方法和步骤"></a>三、操作方法和步骤</h1><h2 id="（1）下载软件包，并解压"><a href="#（1）下载软件包，并解压" class="headerlink" title="（1）下载软件包，并解压"></a>（1）下载软件包，并解压</h2><p>1.下载地址：<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a><br>可以通过<code>Ctrl+F</code>快速查找<br>2.使用<code>tar</code>命令解压文件到/usr/src目录下。执行命令：</p><pre><code class="bash">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre><p>3.解压之后，切换工作目录到<code>/usr/src/linux-4.15.10/</code>，可以是用<code>Tab</code>键补全路径。执行命令：</p><pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre><p>4.后面操作大部分都需要root权限，使用<code>su</code>命令切换用户，输入密码时不会显示。执行命令：</p><pre><code class="bash">su root</code></pre><h2 id="（2）修改源程序，增加系统调用"><a href="#（2）修改源程序，增加系统调用" class="headerlink" title="（2）修改源程序，增加系统调用"></a>（2）修改源程序，增加系统调用</h2><p><strong>小提示：</strong> 在vim编辑器里，<code>i</code>字母插入，按<code>esc</code>后输入<code>:wq</code>保存并退出，<code>q!</code>强制退出</p><p>1.使用vim编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code>文件，添加系统调用号，在普通模式下，<code>shift+g</code>或者<code>G</code>可以直接定位到文尾。执行命令：</p><pre><code class="bash">vim arch/x86/entry/syscalls/syscall_64.tbl</code></pre><p>添加两个没有使用(unuse)的系统调用号，其他格式可以参考文件中的其他系统调用，这里我添加了两个系统调用。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406232920550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加系统调用号">2.使用vim编辑<code>include/linux/syscalls.h</code>文件，添加原型声明。执行命令：</p><pre><code class="bash">vim include/linux/syscalls.h</code></pre><p>不传递参数的时候，void也不能漏写。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233121458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加原型声明"><br>3.使用vim编辑<code>kernel/sys.c</code>文件，实现具体的系统调用。执行命令：</p><pre><code class="bash">vim kernel/sys.c</code></pre><p>代码打一遍印象深刻一些，GoGoGo！代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233418258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="系统调用的实现"></p><hr><h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><p>这里就不详细说明了，请参考<a href="https://auligey.github.io/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/" target="_blank" rel="noopener">Linux发行版 CentOS编译内核</a></p><hr><h2 id="（4）测试系统调用"><a href="#（4）测试系统调用" class="headerlink" title="（4）测试系统调用"></a>（4）测试系统调用</h2><p>1.使用vim命令创建测试文件<code>mysyscall.c</code>和<code>mycall.c</code>，下面以mysyscall.c的创建和测试为例。执行命令：</p><pre><code class="bash">vim mysyscall.c</code></pre><p><img src="https://img-blog.csdnimg.cn/20200406233820378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="测试mysyscall"><br>2.使用gcc编译c程序文件<br><em>编译的四个阶段</em></p><ul><li>-E：仅执行编译预处理</li><li>-c：仅执行编译操作，不进行连接操作</li><li>-S：将C代码转换为汇编代码</li><li>-o：指定生成的输出文件</li></ul><p>直接使用<code>gcc -o</code>生成指定输出文件。执行命令：</p><pre><code class="bash">gcc -o mysyscall_test mysyscall_test.c   #使用gcc编译</code></pre><p>运行可执行文件，执行命令：</p><pre><code class="bash">./mysyscall_test        # 运行可执行文件</code></pre><p><img src="https://img-blog.csdnimg.cn/20200406234708504.png" alt="gcc编译测试文件并执行"><br>使用<code>dmesg</code>查看printk的输出情况。执行命令：</p><pre><code class="bash">dmesg</code></pre><p><img src="https://img-blog.csdnimg.cn/2020040623462720.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="dmesg输出情况"><br>系统调用的<strong>返回值</strong>和<strong>printk的输出</strong>均符合预期，系统调用成功添加了！</p><hr><h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><ul><li>两个字高度概括，<strong>简单！</strong></li><li>剩下的你们自己慢慢写吧，有问题欢迎在留言区交流，谢谢观看。</li></ul>]]></content>
       
       
       <categories>
@@ -22,9 +22,9 @@
             
             <tag> Linux </tag>
             
-            <tag> CentOS </tag>
-            
             <tag> 系统调用 </tag>
+            
+            <tag> CentOS </tag>
             
         </tags>
       
@@ -89,6 +89,31 @@
     
     
     <entry>
+      <title>hexo安装教程</title>
+      <link href="/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+      <url>/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>安装hexo之前，需要安装下列应用程序：</p><ul><li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li><li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2>Windows：下载并安装 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git(官网)</a>或者<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝 Git for Windows 镜像</a><br>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">Homebrew</a>, <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">MacPorts</a> 或者下载<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">安装程序</a>。<br>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code><br>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2></li><li>Node.js 为大多数平台提供了官方的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">安装程序</a>。对于中国大陆地区用户，可以前往<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>下载。<ul><li>安装选项还是全部默认，只不过最后一步添加路径时选择<code>Use Git from the Windows Command Prompt</code>，这样我们就可以直接在命令提示符里打开Git了</li><li>安装完成后在命令提示符中输入<code>git --version</code>验证是否安装成功。</li></ul></li></ul><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><p>安装必备应用程序后，即可使用<code>npm</code>（你配吗hahaha开个玩笑）安装hexo</p><pre><code class="bash">$ npm install -g hexo-cli</code></pre><h1 id="进阶使用-hexo"><a href="#进阶使用-hexo" class="headerlink" title="进阶使用 hexo"></a>进阶使用 hexo</h1><p>安装后，可以使用两种方式执行hexo：</p><ul><li><code>npx hexo &lt;命令&gt;</code></li><li>将 hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;命令&gt;</code>：</li></ul><pre><code class="bash">echo &#39;PATH=&quot;$PATH:./node_modules/.bin&quot;&#39; &gt;&gt; ~/.profile</code></pre><h1 id="hexo真香！"><a href="#hexo真香！" class="headerlink" title="hexo真香！"></a>hexo真香！</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>白嫖系列——xmind 8</title>
       <link href="/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94xmind%208/"/>
       <url>/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94xmind%208/</url>
@@ -112,31 +137,6 @@
             <tag> 破解 </tag>
             
             <tag> tools </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo安装教程</title>
-      <link href="/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-      <url>/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
-      
-        <content type="html"><![CDATA[<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>安装hexo之前，需要安装下列应用程序：</p><ul><li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li><li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2>Windows：下载并安装 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git(官网)</a>或者<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝 Git for Windows 镜像</a><br>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">Homebrew</a>, <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">MacPorts</a> 或者下载<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">安装程序</a>。<br>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code><br>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2></li><li>Node.js 为大多数平台提供了官方的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">安装程序</a>。对于中国大陆地区用户，可以前往<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>下载。<ul><li>安装选项还是全部默认，只不过最后一步添加路径时选择<code>Use Git from the Windows Command Prompt</code>，这样我们就可以直接在命令提示符里打开Git了</li><li>安装完成后在命令提示符中输入<code>git --version</code>验证是否安装成功。</li></ul></li></ul><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><p>安装必备应用程序后，即可使用<code>npm</code>（你配吗hahaha开个玩笑）安装hexo</p><pre><code class="bash">$ npm install -g hexo-cli</code></pre><h1 id="进阶使用-hexo"><a href="#进阶使用-hexo" class="headerlink" title="进阶使用 hexo"></a>进阶使用 hexo</h1><p>安装后，可以使用两种方式执行hexo：</p><ul><li><code>npx hexo &lt;命令&gt;</code></li><li>将 hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;命令&gt;</code>：</li></ul><pre><code class="bash">echo &#39;PATH=&quot;$PATH:./node_modules/.bin&quot;&#39; &gt;&gt; ~/.profile</code></pre><h1 id="hexo真香！"><a href="#hexo真香！" class="headerlink" title="hexo真香！"></a>hexo真香！</h1>]]></content>
-      
-      
-      <categories>
-          
-          <category> hexo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
             
         </tags>
       
