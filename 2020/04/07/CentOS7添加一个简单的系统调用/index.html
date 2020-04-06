@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>故事的大大仙</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="故事的大大仙">
+  <title>CentOS7添加一个简单的系统调用 | 故事的大大仙</title>
+  <meta name="keywords" content=" Linux , CentOS , 系统调用 ">
+  <meta name="description" content="CentOS7添加一个简单的系统调用 | 故事的大大仙">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -50,7 +50,7 @@
 </div>
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -329,12 +329,72 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-CentOS7添加一个简单的系统调用" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于故事的大大仙"><span class="toc-text">关于故事的大大仙</span></a></li></ol></li></ol>
+        <h1 class="article-title">CentOS7添加一个简单的系统调用</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color1">Linux</a>
+            
+            <a class="color2">CentOS</a>
+            
+            <a class="color5">系统调用</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-04-07 00:08:17'>2020-04-07 00:05</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:776</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、实验目的"><span class="toc-text">一、实验目的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、实验内容"><span class="toc-text">二、实验内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、实验环境"><span class="toc-text">二、实验环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、操作方法和步骤"><span class="toc-text">三、操作方法和步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（1）下载软件包，并解压"><span class="toc-text">（1）下载软件包，并解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（2）修改源程序，增加系统调用"><span class="toc-text">（2）修改源程序，增加系统调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（3）编译内核"><span class="toc-text">（3）编译内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（4）测试系统调用"><span class="toc-text">（4）测试系统调用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、总结"><span class="toc-text">四、总结</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -347,34 +407,82 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于故事的大大仙"><a href="#关于故事的大大仙" class="headerlink" title="关于故事的大大仙"></a>关于故事的大大仙</h2><p><strong>故事的大大仙</strong> 是江歌（李长江）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>主要功能：</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><ol>
+<li>学习Linux的内核的系统调用。</li>
+<li>理解、掌握Linux系统调用的实现框架、用户界面、参数传递、进入/返回过程。</li>
+</ol>
+<h1 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h1><p>在系统调用中添加一个不用传递参数的系统调用，实现一个简单的系统调用的添加。执行这个系统调用，在屏幕上显示输出“Hello World! ”。</p>
+<hr>
+<h1 id="二、实验环境"><a href="#二、实验环境" class="headerlink" title="二、实验环境"></a>二、实验环境</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p>
+<hr>
+<h1 id="三、操作方法和步骤"><a href="#三、操作方法和步骤" class="headerlink" title="三、操作方法和步骤"></a>三、操作方法和步骤</h1><h2 id="（1）下载软件包，并解压"><a href="#（1）下载软件包，并解压" class="headerlink" title="（1）下载软件包，并解压"></a>（1）下载软件包，并解压</h2><p>1.下载地址：<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a><br>可以通过<code>Ctrl+F</code>快速查找<br>2.使用<code>tar</code>命令解压文件到/usr/src目录下。执行命令：</p>
+<pre><code class="bash">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre>
+<p>3.解压之后，切换工作目录到<code>/usr/src/linux-4.15.10/</code>，可以是用<code>Tab</code>键补全路径。执行命令：</p>
+<pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre>
+<p>4.后面操作大部分都需要root权限，使用<code>su</code>命令切换用户，输入密码时不会显示。执行命令：</p>
+<pre><code class="bash">su root</code></pre>
+<h2 id="（2）修改源程序，增加系统调用"><a href="#（2）修改源程序，增加系统调用" class="headerlink" title="（2）修改源程序，增加系统调用"></a>（2）修改源程序，增加系统调用</h2><p><strong>小提示：</strong> 在vim编辑器里，<code>i</code>字母插入，按<code>esc</code>后输入<code>:wq</code>保存并退出，<code>q!</code>强制退出</p>
+<p>1.使用vim编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code>文件，添加系统调用号，在普通模式下，<code>shift+g</code>或者<code>G</code>可以直接定位到文尾。执行命令：</p>
+<pre><code class="bash">vim arch/x86/entry/syscalls/syscall_64.tbl</code></pre>
+<p>添加两个没有使用(unuse)的系统调用号，其他格式可以参考文件中的其他系统调用，这里我添加了两个系统调用。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406232920550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加系统调用号">2.使用vim编辑<code>include/linux/syscalls.h</code>文件，添加原型声明。执行命令：</p>
+<pre><code class="bash">vim include/linux/syscalls.h</code></pre>
+<p>不传递参数的时候，void也不能漏写。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233121458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加原型声明"><br>3.使用vim编辑<code>kernel/sys.c</code>文件，实现具体的系统调用。执行命令：</p>
+<pre><code class="bash">vim kernel/sys.c</code></pre>
+<p>代码打一遍印象深刻一些，GoGoGo！代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233418258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="系统调用的实现"></p>
+<hr>
+<h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><p>这里就不详细说明了，请参考<a href="https://blog.csdn.net/qq_45116009/article/details/105325871" target="_blank" rel="noopener">Linux发行版 CentOS编译内核</a></p>
+<hr>
+<h2 id="（4）测试系统调用"><a href="#（4）测试系统调用" class="headerlink" title="（4）测试系统调用"></a>（4）测试系统调用</h2><p>1.使用vim命令创建测试文件<code>mysyscall.c</code>和<code>mycall.c</code>，下面以mysyscall.c的创建和测试为例。执行命令：</p>
+<pre><code class="bash">vim mysyscall.c</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200406233820378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="测试mysyscall"><br>2.使用gcc编译c程序文件<br><em>编译的四个阶段</em></p>
 <ul>
-<li>搜索：支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a href='http://yelog.org/2017/03/24/3-hexo-shortcuts/' target="_blank" rel="noopener">3-hexo快捷键说明</a></li>
+<li>-E：仅执行编译预处理</li>
+<li>-c：仅执行编译操作，不进行连接操作</li>
+<li>-S：将C代码转换为汇编代码</li>
+<li>-o：指定生成的输出文件</li>
+</ul>
+<p>直接使用<code>gcc -o</code>生成指定输出文件。执行命令：</p>
+<pre><code class="bash">gcc -o mysyscall_test mysyscall_test.c   #使用gcc编译</code></pre>
+<p>运行可执行文件，执行命令：</p>
+<pre><code class="bash">./mysyscall_test        # 运行可执行文件</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200406234708504.png" alt="gcc编译测试文件并执行"><br>使用<code>dmesg</code>查看printk的输出情况。执行命令：</p>
+<pre><code class="bash">dmesg</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2020040623462720.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="dmesg输出情况"><br>系统调用的<strong>返回值</strong>和<strong>printk的输出</strong>均符合预期，系统调用成功添加了！</p>
+<hr>
+<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><ul>
+<li>两个字高度概括，<strong>简单！</strong></li>
+<li>剩下的你们自己慢慢写吧，有问题欢迎在留言区交流，谢谢观看。</li>
 </ul>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源。欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至auligey@gmail.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>CentOS7添加一个简单的系统调用</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">776</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="故事的大大仙">故事的大大仙</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-04-07, 00:05:56</p>
+    <p><span class="copy-title">最后更新:</span>2020-04-07, 00:08:17</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" title="CentOS7添加一个简单的系统调用">http://github.com/auligey/auligey.github.io/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -394,6 +502,53 @@
         gitalk.render('comments')
     })
 </script>
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
 
 
     </div>

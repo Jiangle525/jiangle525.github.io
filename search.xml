@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>CentOS7添加一个简单的系统调用</title>
+      <link href="/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"/>
+      <url>/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<hr><h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><ol><li>学习Linux的内核的系统调用。</li><li>理解、掌握Linux系统调用的实现框架、用户界面、参数传递、进入/返回过程。</li></ol><h1 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h1><p>在系统调用中添加一个不用传递参数的系统调用，实现一个简单的系统调用的添加。执行这个系统调用，在屏幕上显示输出“Hello World! ”。</p><hr><h1 id="二、实验环境"><a href="#二、实验环境" class="headerlink" title="二、实验环境"></a>二、实验环境</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p><hr><h1 id="三、操作方法和步骤"><a href="#三、操作方法和步骤" class="headerlink" title="三、操作方法和步骤"></a>三、操作方法和步骤</h1><h2 id="（1）下载软件包，并解压"><a href="#（1）下载软件包，并解压" class="headerlink" title="（1）下载软件包，并解压"></a>（1）下载软件包，并解压</h2><p>1.下载地址：<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a><br>可以通过<code>Ctrl+F</code>快速查找<br>2.使用<code>tar</code>命令解压文件到/usr/src目录下。执行命令：</p><pre><code class="bash">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre><p>3.解压之后，切换工作目录到<code>/usr/src/linux-4.15.10/</code>，可以是用<code>Tab</code>键补全路径。执行命令：</p><pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre><p>4.后面操作大部分都需要root权限，使用<code>su</code>命令切换用户，输入密码时不会显示。执行命令：</p><pre><code class="bash">su root</code></pre><h2 id="（2）修改源程序，增加系统调用"><a href="#（2）修改源程序，增加系统调用" class="headerlink" title="（2）修改源程序，增加系统调用"></a>（2）修改源程序，增加系统调用</h2><p><strong>小提示：</strong> 在vim编辑器里，<code>i</code>字母插入，按<code>esc</code>后输入<code>:wq</code>保存并退出，<code>q!</code>强制退出</p><p>1.使用vim编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code>文件，添加系统调用号，在普通模式下，<code>shift+g</code>或者<code>G</code>可以直接定位到文尾。执行命令：</p><pre><code class="bash">vim arch/x86/entry/syscalls/syscall_64.tbl</code></pre><p>添加两个没有使用(unuse)的系统调用号，其他格式可以参考文件中的其他系统调用，这里我添加了两个系统调用。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406232920550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加系统调用号">2.使用vim编辑<code>include/linux/syscalls.h</code>文件，添加原型声明。执行命令：</p><pre><code class="bash">vim include/linux/syscalls.h</code></pre><p>不传递参数的时候，void也不能漏写。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233121458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加原型声明"><br>3.使用vim编辑<code>kernel/sys.c</code>文件，实现具体的系统调用。执行命令：</p><pre><code class="bash">vim kernel/sys.c</code></pre><p>代码打一遍印象深刻一些，GoGoGo！代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233418258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="系统调用的实现"></p><hr><h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><p>这里就不详细说明了，请参考<a href="https://blog.csdn.net/qq_45116009/article/details/105325871" target="_blank" rel="noopener">Linux发行版 CentOS编译内核</a></p><hr><h2 id="（4）测试系统调用"><a href="#（4）测试系统调用" class="headerlink" title="（4）测试系统调用"></a>（4）测试系统调用</h2><p>1.使用vim命令创建测试文件<code>mysyscall.c</code>和<code>mycall.c</code>，下面以mysyscall.c的创建和测试为例。执行命令：</p><pre><code class="bash">vim mysyscall.c</code></pre><p><img src="https://img-blog.csdnimg.cn/20200406233820378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="测试mysyscall"><br>2.使用gcc编译c程序文件<br><em>编译的四个阶段</em></p><ul><li>-E：仅执行编译预处理</li><li>-c：仅执行编译操作，不进行连接操作</li><li>-S：将C代码转换为汇编代码</li><li>-o：指定生成的输出文件</li></ul><p>直接使用<code>gcc -o</code>生成指定输出文件。执行命令：</p><pre><code class="bash">gcc -o mysyscall_test mysyscall_test.c   #使用gcc编译</code></pre><p>运行可执行文件，执行命令：</p><pre><code class="bash">./mysyscall_test        # 运行可执行文件</code></pre><p><img src="https://img-blog.csdnimg.cn/20200406234708504.png" alt="gcc编译测试文件并执行"><br>使用<code>dmesg</code>查看printk的输出情况。执行命令：</p><pre><code class="bash">dmesg</code></pre><p><img src="https://img-blog.csdnimg.cn/2020040623462720.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="dmesg输出情况"><br>系统调用的<strong>返回值</strong>和<strong>printk的输出</strong>均符合预期，系统调用成功添加了！</p><hr><h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><ul><li>两个字高度概括，<strong>简单！</strong></li><li>剩下的你们自己慢慢写吧，有问题欢迎在留言区交流，谢谢观看。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
+            
+            <tag> 系统调用 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CentOS7编译内核</title>
+      <link href="/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/"/>
+      <url>/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/</url>
+      
+        <content type="html"><![CDATA[<hr><h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><ol><li>学习怎样重新编译Linux内核。</li><li>理解、掌握Linux标准内核和发行版本内核的区别。</li></ol><hr><h1 id="二、环境准备"><a href="#二、环境准备" class="headerlink" title="二、环境准备"></a>二、环境准备</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p><hr><h1 id="三、操作方法和步骤"><a href="#三、操作方法和步骤" class="headerlink" title="三、操作方法和步骤"></a>三、操作方法和步骤</h1><ul><li>编译过程很多地方需要root权限，为了方便，直接切换到root，切换命令：<pre><code class="bash">su root</code></pre></li><li><strong>小提示</strong>：输入密码时不会显示，<code>$</code>表示一般用户，<code>#</code>表示超级管理员root，<code>Tab</code>键可以补全路径</li></ul><h2 id="（1）下载内核并解压"><a href="#（1）下载内核并解压" class="headerlink" title="（1）下载内核并解压"></a>（1）下载内核并解压</h2><ol><li>使用浏览器打开<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a></li><li><code>Ctrl+F</code>查找linux-4.15.10.tar.gz，点击即可下载，我下载的位置是<code>/home/username/Downloads/linux-4.15.10.tar.gz</code></li><li>使用<code>tar</code>命令解压文件：<pre><code class="c">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre></li><li>解压之后，切换工作目录：<pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre></li></ol><h2 id="（2）配置项"><a href="#（2）配置项" class="headerlink" title="（2）配置项"></a>（2）配置项</h2><p><strong>配置项的几种方式</strong></p><ul><li><code>make config</code>         基于文本的配置界面</li><li><code>make menuconfig</code>    基于文本菜单的配置界面</li><li><code>make xconfig</code>        基于图像窗口的配置界面</li><li><code>make oldconfig</code>        基于原来内核配置基础上修改</li></ul><p><strong>本文采用基于文本菜单的配置界面（make menuconfig）</strong></p><ul><li>使用<code>make menuconfig</code>需要<code>ncurses-devel</code>的支持</li><li>安装<code>ncurses-devel</code>命令：<pre><code class="bash">yum install ncurses-devel</code></pre></li><li>执行<code>make menuconfig</code>，开始选择配置项（<strong>注意终端窗口至少为19行，80列，否则报错提示</strong>）<pre><code class="bash">make menuconfig</code></pre></li><li>成功执行后，会出现下面的窗口：<br><img src="https://img-blog.csdnimg.cn/20200405135307329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70#pic_center" alt="menuconfig"></li><li>直接<strong>保存退出</strong>就可以了，它会使用 CentOS 内部的配置文件作为这次编译的配置文件</li></ul><h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><ul><li>编译需要<code>elfutils-libelf-devel</code> 和 <code>openssl-devel</code> 的支持，安装命令：<pre><code class="bash">yum install elfutils-libelf-devel openssl-devel</code></pre></li><li>使用<code>make</code>命令开始编译内核，可以使用多核线程提高编译速度：<pre><code class="bash">make -j4</code></pre></li></ul><p><strong>emmm，编译时间很长(1小时左右，与电脑性能有关)，耐心等待</strong></p><h2 id="（4）安装"><a href="#（4）安装" class="headerlink" title="（4）安装"></a>（4）安装</h2><ul><li>漫长的等待之后，终于迎来了安装内核</li><li>执行 <code>make modules_install</code> 开始安装模块：<pre><code class="bash">make modules_install</code></pre></li><li>等待几分钟，执行<code>make install</code> 开始安装核心：<pre><code class="bash">make install</code></pre></li><li>顺利安装完成，重启虚拟机看看</li></ul><h2 id="（5）重启虚拟机"><a href="#（5）重启虚拟机" class="headerlink" title="（5）重启虚拟机"></a>（5）重启虚拟机</h2><ul><li><p>重启之后，进入grub界面，选择新编译的内核：<code>CentOS Linux （4.15.10）</code></p></li><li><p>进入桌面后，打开终端，使用<code>uname -a</code>查看内核版本：</p><pre><code class="bash">uname -sr</code></pre></li><li><p>实验做完了，才算完成了一半，<strong>还有实验报告没写！haha</strong></p></li></ul><hr><h1 id="四、欠揍式总结（👊警告）"><a href="#四、欠揍式总结（👊警告）" class="headerlink" title="四、欠揍式总结（👊警告）"></a>四、欠揍式总结（👊警告）</h1><ul><li><strong>有啥总结的！不是一番风顺吗？</strong></li><li><strong>Go！ 篮球场约起！</strong></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
+            
+            <tag> 操作系统课程实践 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>3-hexo快捷键说明</title>
       <link href="/2020/04/05/3-hexo%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%B4%E6%98%8E/"/>
       <url>/2020/04/05/3-hexo%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%B4%E6%98%8E/</url>
@@ -31,11 +89,11 @@
     
     
     <entry>
-      <title>xmind 8白嫖（破解）教程</title>
-      <link href="/2020/04/04/xmind%208%E7%99%BD%E5%AB%96%EF%BC%88%E7%A0%B4%E8%A7%A3%EF%BC%89%E6%95%99%E7%A8%8B/"/>
-      <url>/2020/04/04/xmind%208%E7%99%BD%E5%AB%96%EF%BC%88%E7%A0%B4%E8%A7%A3%EF%BC%89%E6%95%99%E7%A8%8B/</url>
+      <title>白嫖系列——xmind 8</title>
+      <link href="/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94xmind%208/"/>
+      <url>/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94xmind%208/</url>
       
-        <content type="html"><![CDATA[<h1 id="如何白嫖xmind-8-？"><a href="#如何白嫖xmind-8-？" class="headerlink" title="如何白嫖xmind 8 ？"></a>如何白嫖xmind 8 ？</h1><blockquote><p>仅供学习交流使用，请支持正版，谢谢合作（白嫖，它不香么？）</p></blockquote><h1 id="1-在官网下载xmind最新的版本，安装软件"><a href="#1-在官网下载xmind最新的版本，安装软件" class="headerlink" title="1.在官网下载xmind最新的版本，安装软件"></a>1.在官网下载xmind最新的版本，安装软件</h1><p>官网地址：<a href="https://www.xmind.cn/download/xmind8" target="_blank" rel="noopener">https://www.xmind.cn/download/xmind8</a><br>本文用的是XMind 8 Update 9</p><h1 id="2-下载软件包"><a href="#2-下载软件包" class="headerlink" title="2.下载软件包"></a>2.下载软件包</h1><p>链接：<code>https://pan.baidu.com/s/1bOzNQOPBI-cjV39uUUsdtA</code><br>提取码：<code>j6li</code> </p><h1 id="3-找到安装目录"><a href="#3-找到安装目录" class="headerlink" title="3. 找到安装目录"></a>3. 找到安装目录</h1><p>本文的是：<code>D:\Program Files (x86)\XMind</code><br>如果找不到，可以通过鼠标右键xmind图标–&gt;打开文件所在位置<br><img src="/img/%E6%9F%A5%E6%89%BExmind%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE.png" alt="查找xmind安装位置"></p><h1 id="4-打开我分享的文件"><a href="#4-打开我分享的文件" class="headerlink" title="4.打开我分享的文件"></a>4.打开我分享的文件</h1><p><img src="/img/%E6%9F%A5%E6%89%BExmind%E7%A0%B4%E8%A7%A3%E6%96%87%E4%BB%B6.png" alt="查找xmind破解文件"><br>找到这个<code>.jar</code>的文件，复制到xmind的安装目录（第3步中的安装路径）</p><h1 id="5-修改xmind配置文件-xmind-ini"><a href="#5-修改xmind配置文件-xmind-ini" class="headerlink" title="5.修改xmind配置文件(xmind.ini)"></a>5.修改xmind配置文件(xmind.ini)</h1><p> 在安装目录下，找到xmind.ini文件，用记事本打开<br> 在最后<strong>添加一句代码</strong></p><pre><code class="bash">-javaagent:D:\Program Files(x86)\XMind\XMindCrack.jar</code></pre><p>并<strong>保存文件</strong><br><strong>注意：</strong> <code>-javaagent:</code>后面为<code>XMindCrack.jar</code>文件的路径，<strong>冒号要使用英文</strong></p><h1 id="6-打开安装后的xmind"><a href="#6-打开安装后的xmind" class="headerlink" title="6.打开安装后的xmind"></a>6.打开安装后的xmind</h1><p>在<strong>菜单栏</strong>找到 “帮助” –&gt; “序列号”，填写<strong>邮箱</strong>和<strong>序列号</strong><br>邮箱随便填写一个正确的格式，也可以填写你自己的邮箱<br>打开我分享的文件<code>xmind激活序列号.txt</code>，复制粘贴上去<br><img src="/img/%E8%8E%B7%E5%8F%96xmind%E6%BF%80%E6%B4%BB%E5%BA%8F%E5%88%97%E5%8F%B7.png" alt="获取xmind激活序列号"></p><p><strong>激活成功<br>放肆的使用吧！</strong></p><p><strong>PS：</strong></p><p>仅供学习交流使用，任何人不得以商业盈利为目的，否则一切责任自己承担！</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="如何优雅的白嫖xmind-8-？"><a href="#如何优雅的白嫖xmind-8-？" class="headerlink" title="如何优雅的白嫖xmind 8 ？"></a>如何优雅的白嫖xmind 8 ？</h1><blockquote><p>仅供学习交流使用，请支持正版，谢谢合作（白嫖，它不香么？）</p></blockquote><h1 id="1-在官网下载xmind最新的版本，安装软件"><a href="#1-在官网下载xmind最新的版本，安装软件" class="headerlink" title="1.在官网下载xmind最新的版本，安装软件"></a>1.在官网下载xmind最新的版本，安装软件</h1><p>官网地址：<a href="https://www.xmind.cn/download/xmind8" target="_blank" rel="noopener">https://www.xmind.cn/download/xmind8</a><br>本文用的是XMind 8 Update 9</p><h1 id="2-下载软件包"><a href="#2-下载软件包" class="headerlink" title="2.下载软件包"></a>2.下载软件包</h1><p>链接：<code>https://pan.baidu.com/s/1bOzNQOPBI-cjV39uUUsdtA</code><br>提取码：<code>j6li</code> </p><h1 id="3-找到安装目录"><a href="#3-找到安装目录" class="headerlink" title="3. 找到安装目录"></a>3. 找到安装目录</h1><p>本文的是：<code>D:\Program Files (x86)\XMind</code><br>如果找不到，可以通过鼠标右键xmind图标–&gt;打开文件所在位置<br><img src="/img/%E6%9F%A5%E6%89%BExmind%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE.png" alt="查找xmind安装位置"></p><h1 id="4-打开我分享的文件"><a href="#4-打开我分享的文件" class="headerlink" title="4.打开我分享的文件"></a>4.打开我分享的文件</h1><p><img src="/img/%E6%9F%A5%E6%89%BExmind%E7%A0%B4%E8%A7%A3%E6%96%87%E4%BB%B6.png" alt="查找xmind破解文件"><br>找到这个<code>.jar</code>的文件，复制到xmind的安装目录（第3步中的安装路径）</p><h1 id="5-修改xmind配置文件-xmind-ini"><a href="#5-修改xmind配置文件-xmind-ini" class="headerlink" title="5.修改xmind配置文件(xmind.ini)"></a>5.修改xmind配置文件(xmind.ini)</h1><p> 在安装目录下，找到xmind.ini文件，用记事本打开<br> 在最后<strong>添加一句代码</strong></p><pre><code class="bash">-javaagent:D:\Program Files(x86)\XMind\XMindCrack.jar</code></pre><p>并<strong>保存文件</strong><br><strong>注意：</strong> <code>-javaagent:</code>后面为<code>XMindCrack.jar</code>文件的路径，<strong>冒号要使用英文</strong></p><h1 id="6-打开安装后的xmind"><a href="#6-打开安装后的xmind" class="headerlink" title="6.打开安装后的xmind"></a>6.打开安装后的xmind</h1><p>在<strong>菜单栏</strong>找到 “帮助” –&gt; “序列号”，填写<strong>邮箱</strong>和<strong>序列号</strong><br>邮箱随便填写一个正确的格式，也可以填写你自己的邮箱<br>打开我分享的文件<code>xmind激活序列号.txt</code>，复制粘贴上去<br><img src="/img/%E8%8E%B7%E5%8F%96xmind%E6%BF%80%E6%B4%BB%E5%BA%8F%E5%88%97%E5%8F%B7.png" alt="获取xmind激活序列号"></p><p><strong>激活成功<br>放肆的使用吧！</strong></p><p><strong>PS：</strong></p><p>仅供学习交流使用，任何人不得以商业盈利为目的，否则一切责任自己承担！</p>]]></content>
       
       
       <categories>

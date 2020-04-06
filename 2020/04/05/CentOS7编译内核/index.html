@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>故事的大大仙</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="故事的大大仙">
+  <title>CentOS7编译内核 | 故事的大大仙</title>
+  <meta name="keywords" content=" Linux , CentOS , 操作系统课程实践 ">
+  <meta name="description" content="CentOS7编译内核 | 故事的大大仙">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -50,7 +50,7 @@
 </div>
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -329,12 +329,72 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-CentOS7编译内核" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于故事的大大仙"><span class="toc-text">关于故事的大大仙</span></a></li></ol></li></ol>
+        <h1 class="article-title">CentOS7编译内核</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color1">Linux</a>
+            
+            <a class="color2">CentOS</a>
+            
+            <a class="color4">操作系统课程实践</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-04-06 17:00:51'>2020-04-05 14:28</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:653</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、实验目的"><span class="toc-text">一、实验目的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、环境准备"><span class="toc-text">二、环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、操作方法和步骤"><span class="toc-text">三、操作方法和步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（1）下载内核并解压"><span class="toc-text">（1）下载内核并解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（2）配置项"><span class="toc-text">（2）配置项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（3）编译内核"><span class="toc-text">（3）编译内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（4）安装"><span class="toc-text">（4）安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（5）重启虚拟机"><span class="toc-text">（5）重启虚拟机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、欠揍式总结（👊警告）"><span class="toc-text">四、欠揍式总结（👊警告）</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -347,34 +407,102 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于故事的大大仙"><a href="#关于故事的大大仙" class="headerlink" title="关于故事的大大仙"></a>关于故事的大大仙</h2><p><strong>故事的大大仙</strong> 是江歌（李长江）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>主要功能：</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><ol>
+<li>学习怎样重新编译Linux内核。</li>
+<li>理解、掌握Linux标准内核和发行版本内核的区别。</li>
+</ol>
+<hr>
+<h1 id="二、环境准备"><a href="#二、环境准备" class="headerlink" title="二、环境准备"></a>二、环境准备</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p>
+<hr>
+<h1 id="三、操作方法和步骤"><a href="#三、操作方法和步骤" class="headerlink" title="三、操作方法和步骤"></a>三、操作方法和步骤</h1><ul>
+<li>编译过程很多地方需要root权限，为了方便，直接切换到root，切换命令：<pre><code class="bash">su root</code></pre>
+</li>
+<li><strong>小提示</strong>：输入密码时不会显示，<code>$</code>表示一般用户，<code>#</code>表示超级管理员root，<code>Tab</code>键可以补全路径</li>
+</ul>
+<h2 id="（1）下载内核并解压"><a href="#（1）下载内核并解压" class="headerlink" title="（1）下载内核并解压"></a>（1）下载内核并解压</h2><ol>
+<li>使用浏览器打开<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a></li>
+<li><code>Ctrl+F</code>查找linux-4.15.10.tar.gz，点击即可下载，我下载的位置是<code>/home/username/Downloads/linux-4.15.10.tar.gz</code></li>
+<li>使用<code>tar</code>命令解压文件：<pre><code class="c">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre>
+</li>
+<li>解压之后，切换工作目录：<pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre>
+</li>
+</ol>
+<h2 id="（2）配置项"><a href="#（2）配置项" class="headerlink" title="（2）配置项"></a>（2）配置项</h2><p><strong>配置项的几种方式</strong></p>
 <ul>
-<li>搜索：支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a href='http://yelog.org/2017/03/24/3-hexo-shortcuts/' target="_blank" rel="noopener">3-hexo快捷键说明</a></li>
+<li><code>make config</code>         基于文本的配置界面</li>
+<li><code>make menuconfig</code>    基于文本菜单的配置界面</li>
+<li><code>make xconfig</code>        基于图像窗口的配置界面</li>
+<li><code>make oldconfig</code>        基于原来内核配置基础上修改</li>
+</ul>
+<p><strong>本文采用基于文本菜单的配置界面（make menuconfig）</strong></p>
+<ul>
+<li>使用<code>make menuconfig</code>需要<code>ncurses-devel</code>的支持</li>
+<li>安装<code>ncurses-devel</code>命令：<pre><code class="bash">yum install ncurses-devel</code></pre>
+</li>
+<li>执行<code>make menuconfig</code>，开始选择配置项（<strong>注意终端窗口至少为19行，80列，否则报错提示</strong>）<pre><code class="bash">make menuconfig</code></pre>
+</li>
+<li>成功执行后，会出现下面的窗口：<br><img src="https://img-blog.csdnimg.cn/20200405135307329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70#pic_center" alt="menuconfig"></li>
+<li>直接<strong>保存退出</strong>就可以了，它会使用 CentOS 内部的配置文件作为这次编译的配置文件</li>
+</ul>
+<h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><ul>
+<li>编译需要<code>elfutils-libelf-devel</code> 和 <code>openssl-devel</code> 的支持，安装命令：<pre><code class="bash">yum install elfutils-libelf-devel openssl-devel</code></pre>
+</li>
+<li>使用<code>make</code>命令开始编译内核，可以使用多核线程提高编译速度：<pre><code class="bash">make -j4</code></pre>
+</li>
+</ul>
+<p><strong>emmm，编译时间很长(1小时左右，与电脑性能有关)，耐心等待</strong></p>
+<h2 id="（4）安装"><a href="#（4）安装" class="headerlink" title="（4）安装"></a>（4）安装</h2><ul>
+<li>漫长的等待之后，终于迎来了安装内核</li>
+<li>执行 <code>make modules_install</code> 开始安装模块：<pre><code class="bash">make modules_install</code></pre>
+</li>
+<li>等待几分钟，执行<code>make install</code> 开始安装核心：<pre><code class="bash">make install</code></pre>
+</li>
+<li>顺利安装完成，重启虚拟机看看</li>
+</ul>
+<h2 id="（5）重启虚拟机"><a href="#（5）重启虚拟机" class="headerlink" title="（5）重启虚拟机"></a>（5）重启虚拟机</h2><ul>
+<li><p>重启之后，进入grub界面，选择新编译的内核：<code>CentOS Linux （4.15.10）</code></p>
+</li>
+<li><p>进入桌面后，打开终端，使用<code>uname -a</code>查看内核版本：</p>
+<pre><code class="bash">uname -sr</code></pre>
+</li>
+<li><p>实验做完了，才算完成了一半，<strong>还有实验报告没写！haha</strong></p>
+</li>
+</ul>
+<hr>
+<h1 id="四、欠揍式总结（👊警告）"><a href="#四、欠揍式总结（👊警告）" class="headerlink" title="四、欠揍式总结（👊警告）"></a>四、欠揍式总结（👊警告）</h1><ul>
+<li><strong>有啥总结的！不是一番风顺吗？</strong></li>
+<li><strong>Go！ 篮球场约起！</strong></li>
 </ul>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源。欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至auligey@gmail.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>CentOS7编译内核</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">653</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="故事的大大仙">故事的大大仙</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-04-05, 14:28:12</p>
+    <p><span class="copy-title">最后更新:</span>2020-04-06, 17:00:51</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/" title="CentOS7编译内核">http://github.com/auligey/auligey.github.io/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -394,6 +522,53 @@
         gitalk.render('comments')
     })
 </script>
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
 
 
     </div>
