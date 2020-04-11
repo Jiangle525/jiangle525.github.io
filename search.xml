@@ -4,7 +4,34 @@
   
     
     <entry>
-      <title>CentOS7添加一个简单的系统调用</title>
+      <title>CentOS 7 wget 正在连接 127.0.0.1:8118... 失败：拒绝连接。</title>
+      <link href="/2020/04/12/wget%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5/"/>
+      <url>/2020/04/12/wget%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5/</url>
+      
+        <content type="html"><![CDATA[<p><strong>正在使用wget下载包的时候，出现了拒绝连接的错误</strong></p><pre><code class="bash">[root@CentOS7 local]# wget http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz--2020-04-11 23:46:24--  http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz正在连接 127.0.0.1:8118... 失败：拒绝连接。</code></pre><p><strong>查找问题的方法如下：</strong></p><h3 id="1-查看本地端口是否被占用"><a href="#1-查看本地端口是否被占用" class="headerlink" title="1.查看本地端口是否被占用"></a>1.查看本地端口是否被占用</h3><pre><code class="bash">[root@CentOS7 local]# netstat -ntplActive Internet connections (only servers)Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      1151/cupsd          tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1480/master         tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN      1612/dnsmasq        tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1150/sshd           tcp6       0      0 ::1:631                 :::*                    LISTEN      1151/cupsd          tcp6       0      0 ::1:25                  :::*                    LISTEN      1480/master         tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           tcp6       0      0 :::22                   :::*                    LISTEN      1150/sshd           </code></pre><p>本地端口8118并没有被占用</p><h3 id="2-查看本地网络代理"><a href="#2-查看本地网络代理" class="headerlink" title="2.查看本地网络代理"></a>2.查看本地网络代理</h3><pre><code class="bash">[root@CentOS7 local]# export | grep -i proxydeclare -x ftp_proxy=&quot;http://127.0.0.1:8118&quot;declare -x http_proxy=&quot;http://127.0.0.1:8118&quot;declare -x https_proxy=&quot;http://127.0.0.1:8118&quot;</code></pre><p>网络http确实有代理，几乎可以断定是这个代理引发的错误。</p><p><strong>解决办法：</strong><br>尝试关闭代理，然后重新使用wget下载</p><pre><code class="bash">[root@CentOS7 local]# unset http_proxy [root@CentOS7 local]# wget http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz--2020-04-11 23:48:38--  http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz正在解析主机 jaist.dl.sourceforge.net (jaist.dl.sourceforge.net)... 150.65.7.130, 2001:df0:2ed:feed::feed正在连接 jaist.dl.sourceforge.net (jaist.dl.sourceforge.net)|150.65.7.130|:80... 已连接。</code></pre><p><strong>wget连接成功！</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CentOS 7 添加一个简单的系统调用</title>
       <link href="/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"/>
       <url>/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
       
@@ -33,7 +60,7 @@
     
     
     <entry>
-      <title>CentOS7编译内核</title>
+      <title>CentOS 7 编译内核</title>
       <link href="/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/"/>
       <url>/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/</url>
       
@@ -89,31 +116,6 @@
     
     
     <entry>
-      <title>hexo安装教程</title>
-      <link href="/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-      <url>/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
-      
-        <content type="html"><![CDATA[<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>安装hexo之前，需要安装下列应用程序：</p><ul><li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li><li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2>Windows：下载并安装 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git(官网)</a>或者<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝 Git for Windows 镜像</a><br>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">Homebrew</a>, <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">MacPorts</a> 或者下载<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">安装程序</a>。<br>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code><br>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2></li><li>Node.js 为大多数平台提供了官方的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">安装程序</a>。对于中国大陆地区用户，可以前往<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>下载。<ul><li>安装选项还是全部默认，只不过最后一步添加路径时选择<code>Use Git from the Windows Command Prompt</code>，这样我们就可以直接在命令提示符里打开Git了</li><li>安装完成后在命令提示符中输入<code>git --version</code>验证是否安装成功。</li></ul></li></ul><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><p>安装必备应用程序后，即可使用<code>npm</code>（你配吗hahaha开个玩笑）安装hexo</p><pre><code class="bash">$ npm install -g hexo-cli</code></pre><h1 id="进阶使用-hexo"><a href="#进阶使用-hexo" class="headerlink" title="进阶使用 hexo"></a>进阶使用 hexo</h1><p>安装后，可以使用两种方式执行hexo：</p><ul><li><code>npx hexo &lt;命令&gt;</code></li><li>将 hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;命令&gt;</code>：</li></ul><pre><code class="bash">echo &#39;PATH=&quot;$PATH:./node_modules/.bin&quot;&#39; &gt;&gt; ~/.profile</code></pre><h1 id="hexo真香！"><a href="#hexo真香！" class="headerlink" title="hexo真香！"></a>hexo真香！</h1>]]></content>
-      
-      
-      <categories>
-          
-          <category> hexo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>白嫖系列——xmind 8</title>
       <link href="/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94xmind%208/"/>
       <url>/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94xmind%208/</url>
@@ -137,6 +139,31 @@
             <tag> 破解 </tag>
             
             <tag> tools </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo安装教程</title>
+      <link href="/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+      <url>/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>安装hexo之前，需要安装下列应用程序：</p><ul><li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li><li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2>Windows：下载并安装 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git(官网)</a>或者<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝 Git for Windows 镜像</a><br>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">Homebrew</a>, <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">MacPorts</a> 或者下载<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">安装程序</a>。<br>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code><br>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2></li><li>Node.js 为大多数平台提供了官方的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">安装程序</a>。对于中国大陆地区用户，可以前往<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>下载。<ul><li>安装选项还是全部默认，只不过最后一步添加路径时选择<code>Use Git from the Windows Command Prompt</code>，这样我们就可以直接在命令提示符里打开Git了</li><li>安装完成后在命令提示符中输入<code>git --version</code>验证是否安装成功。</li></ul></li></ul><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><p>安装必备应用程序后，即可使用<code>npm</code>（你配吗hahaha开个玩笑）安装hexo</p><pre><code class="bash">$ npm install -g hexo-cli</code></pre><h1 id="进阶使用-hexo"><a href="#进阶使用-hexo" class="headerlink" title="进阶使用 hexo"></a>进阶使用 hexo</h1><p>安装后，可以使用两种方式执行hexo：</p><ul><li><code>npx hexo &lt;命令&gt;</code></li><li>将 hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;命令&gt;</code>：</li></ul><pre><code class="bash">echo &#39;PATH=&quot;$PATH:./node_modules/.bin&quot;&#39; &gt;&gt; ~/.profile</code></pre><h1 id="hexo真香！"><a href="#hexo真香！" class="headerlink" title="hexo真香！"></a>hexo真香！</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
             
         </tags>
       

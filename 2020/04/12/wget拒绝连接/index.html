@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>about | 故事的大大仙</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="about | 故事的大大仙">
+  <title>CentOS 7 wget 正在连接 127.0.0.1:8118... 失败：拒绝连接。 | 故事的大大仙</title>
+  <meta name="keywords" content=" Linux , CentOS ">
+  <meta name="description" content="CentOS 7 wget 正在连接 127.0.0.1:8118... 失败：拒绝连接。 | 故事的大大仙">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -339,24 +339,38 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-wget拒绝连接" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">about</h1>
+        <h1 class="article-title">CentOS 7 wget 正在连接 127.0.0.1:8118... 失败：拒绝连接。</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a  data-rel="Linux">Linux</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color1">Linux</a>
+            
+            <a class="color2">CentOS</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-04-04 14:28:12'>2020-04-04 14:28</time>
+        创建时间:<time class="date" title='更新时间: 2020-04-12 00:11:15'>2020-04-12 00:05</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:421</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -386,7 +400,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查看本地端口是否被占用"><span class="toc-text">1.查看本地端口是否被占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-查看本地网络代理"><span class="toc-text">2.查看本地网络代理</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -402,7 +416,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><strong>正在使用wget下载包的时候，出现了拒绝连接的错误</strong></p>
+<pre><code class="bash">[root@CentOS7 local]# wget http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz
+--2020-04-11 23:46:24--  http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz
+正在连接 127.0.0.1:8118... 失败：拒绝连接。</code></pre>
+<p><strong>查找问题的方法如下：</strong></p>
+<h3 id="1-查看本地端口是否被占用"><a href="#1-查看本地端口是否被占用" class="headerlink" title="1.查看本地端口是否被占用"></a>1.查看本地端口是否被占用</h3><pre><code class="bash">[root@CentOS7 local]# netstat -ntpl
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      1151/cupsd          
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1480/master         
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           
+tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN      1612/dnsmasq        
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1150/sshd           
+tcp6       0      0 ::1:631                 :::*                    LISTEN      1151/cupsd          
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1480/master         
+tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           
+tcp6       0      0 :::22                   :::*                    LISTEN      1150/sshd           
+</code></pre>
+<p>本地端口8118并没有被占用</p>
+<h3 id="2-查看本地网络代理"><a href="#2-查看本地网络代理" class="headerlink" title="2.查看本地网络代理"></a>2.查看本地网络代理</h3><pre><code class="bash">[root@CentOS7 local]# export | grep -i proxy
+declare -x ftp_proxy=&quot;http://127.0.0.1:8118&quot;
+declare -x http_proxy=&quot;http://127.0.0.1:8118&quot;
+declare -x https_proxy=&quot;http://127.0.0.1:8118&quot;
+</code></pre>
+<p>网络http确实有代理，几乎可以断定是这个代理引发的错误。</p>
+<p><strong>解决办法：</strong><br>尝试关闭代理，然后重新使用wget下载</p>
+<pre><code class="bash">[root@CentOS7 local]# unset http_proxy 
+[root@CentOS7 local]# wget http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz
+--2020-04-11 23:48:38--  http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz
+正在解析主机 jaist.dl.sourceforge.net (jaist.dl.sourceforge.net)... 150.65.7.130, 2001:df0:2ed:feed::feed
+正在连接 jaist.dl.sourceforge.net (jaist.dl.sourceforge.net)|150.65.7.130|:80... 已连接。
+</code></pre>
+<p><strong>wget连接成功！</strong></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源。欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至auligey@gmail.com </span>
     </div>
@@ -413,6 +460,18 @@
     <a  class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>CentOS 7 wget 正在连接 127.0.0.1:8118... 失败：拒绝连接。</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">421</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="故事的大大仙">故事的大大仙</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-04-12, 00:05:35</p>
+    <p><span class="copy-title">最后更新:</span>2020-04-12, 00:11:15</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/12/wget%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5/" title="CentOS 7 wget 正在连接 127.0.0.1:8118... 失败：拒绝连接。">http://github.com/auligey/auligey.github.io/2020/04/12/wget%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 
@@ -439,6 +498,46 @@
 
 
 
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
     
 
 
