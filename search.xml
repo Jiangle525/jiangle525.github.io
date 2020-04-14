@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>第一个Markdown文档——Hello.md</title>
+      <link href="/2020/04/13/%E7%AC%AC%E4%B8%80%E4%B8%AAMarkdown%E6%96%87%E6%A1%A3/"/>
+      <url>/2020/04/13/%E7%AC%AC%E4%B8%80%E4%B8%AAMarkdown%E6%96%87%E6%A1%A3/</url>
+      
+        <content type="html"><![CDATA[<p>打开你熟悉的文本编辑器（如 <a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener">notepad++</a>），新建一个 ‘hello.md’ 文件，写入下面的内容，并保存：</p><pre><code class="c"># Hello World**This is my first time to use Markdown***第一次用文本编辑器写Markdown文档*~~这只是万里长征第一步~~ 但是，万事开头难 有了第一步，坚持下去，定有收获！</code></pre><p>‘.md’ 和 ‘.markdown’ 都是被普遍支持的扩展名，不过 ‘.md’ 更加简单和方便。</p><p>他转换成html文档后，应该是这样子：</p><h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p><strong>This is my first time to use Markdown</strong><br><em>第一次用文本编辑器写Markdown文档</em><br><del>这只是万里长征第一步</del><br>但是，万事开头难 有了第一步，坚持下去，定有收获！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于Markdown</title>
+      <link href="/2020/04/13/%E5%85%B3%E4%BA%8EMarkdown/"/>
+      <url>/2020/04/13/%E5%85%B3%E4%BA%8EMarkdown/</url>
+      
+        <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">维基百科: Markdown</a></p><blockquote><p>Markdown 是一种轻量级标记语言，创始人为约翰·格鲁伯（John<br>Gruber）。它允许人们“使用易读易写的纯文本格式编写文档，然后转换成有效的 XHTML（或者<br>HTML）文档”。这种语言吸收了很多在电子邮件中已有的纯文本标记的特性。</p></blockquote><hr><h2 id="为什么选择-Markdown"><a href="#为什么选择-Markdown" class="headerlink" title="为什么选择 Markdown"></a>为什么选择 Markdown</h2><ul><li>它基于纯文本，方便修改和共享；</li><li>几乎可以在所有的文本编辑器中编写；</li><li>有众多编程语言的实现和应用的相关扩展；</li><li>在 GitHub 等网站中有很好的应用；</li><li>很容易转换为 HTML 文档或其他格式；</li><li>适合用来编写文档、记录笔记、撰写文章。</li></ul><hr><h2 id="兼容-HTML"><a href="#兼容-HTML" class="headerlink" title="兼容 HTML"></a>兼容 HTML</h2><p>Markdown 完全兼容 HTML 语法，可以直接在 Markdown 文档中插入 HTML 内容：</p><pre><code class="html">&lt;table&gt;  &lt;tr&gt;    &lt;td&gt;1行1列&lt;/td&gt;    &lt;td&gt;1行2列&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;    &lt;td&gt;2行1列&lt;/td&gt;    &lt;td&gt;2行2列&lt;/td&gt;  &lt;/tr&gt;&lt;/table&gt;</code></pre><p>这段代码会变成下面的样子：</p><table>  <tr>    <td>1行1列</td>    <td>1行2列</td>  </tr>  <tr>    <td>2行1列</td>    <td>2行2列</td>  </tr></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>3-hexo配置首页</title>
+      <link href="/2020/04/13/3-hexo%E9%85%8D%E7%BD%AE%E9%A6%96%E9%A1%B5/"/>
+      <url>/2020/04/13/3-hexo%E9%85%8D%E7%BD%AE%E9%A6%96%E9%A1%B5/</url>
+      
+        <content type="html"><![CDATA[<h3 id="首页文件位置-layout-indexs-md"><a href="#首页文件位置-layout-indexs-md" class="headerlink" title="首页文件位置/layout/indexs.md"></a>首页文件位置/layout/indexs.md</h3><p>既然是md格式，大家应该都已经熟悉了，这里就不再赘述了~</p><h3 id="添加文章数和字数统计"><a href="#添加文章数和字数统计" class="headerlink" title="添加文章数和字数统计"></a>添加文章数和字数统计</h3><ul><li>加入含有 class=”article_number”的html标签可显示文章数量。</li><li>加入含有 class=”site_word_count”的html标签可显示站点总字数。</li></ul><pre><code class="bash">&lt;!-- 这里是借用了code的样式，所以直接使用code标签。    自定义样式，可加入style属性设置--&gt;&lt;code class=&quot;article_number&quot;&gt;&lt;/code&gt;&lt;code class=&quot;site_word_count&quot;&gt;&lt;/code&gt;</code></pre><p><strong>上面代码的效果：</strong><br>文章共<code class="article_number"></code>篇；总字数<code class="site_word_count"></code>字；</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CentOS 7 wget 正在连接 127.0.0.1:8118... 失败：拒绝连接。</title>
       <link href="/2020/04/12/wget%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5/"/>
       <url>/2020/04/12/wget%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5/</url>
@@ -49,9 +124,9 @@
             
             <tag> Linux </tag>
             
-            <tag> 系统调用 </tag>
-            
             <tag> CentOS </tag>
+            
+            <tag> 系统调用 </tag>
             
         </tags>
       
@@ -93,7 +168,7 @@
       <link href="/2020/04/05/3-hexo%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%B4%E6%98%8E/"/>
       <url>/2020/04/05/3-hexo%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AF%B4%E6%98%8E/</url>
       
-        <content type="html"><![CDATA[<p>暂无</p>]]></content>
+        <content type="html"><![CDATA[<p>快捷键为vim风格的，按键可能与vimium（chrome插件）的快捷键有冲突，插件设置屏蔽掉此站的快捷键即可。</p><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><h4 id="搜索框"><a href="#搜索框" class="headerlink" title="搜索框"></a>搜索框</h4>]]></content>
       
       
       <categories>
@@ -108,6 +183,31 @@
             <tag> hexo </tag>
             
             <tag> 快捷键 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo安装教程</title>
+      <link href="/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+      <url>/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<hr><h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>安装hexo之前，需要安装下列应用程序：</p><ul><li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li><li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a></li></ul><hr><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><ul><li>Windows：下载并安装 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git(官网)</a>或者<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝 Git for Windows 镜像</a>，安装选项全部默认，在最后一步添加路径时选择<code>Use Git from the Windows Command Prompt</code>，这样我们就可以直接在命令提示符里打开Git了</li><li>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">Homebrew</a>, <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">MacPorts</a> 或者下载<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">安装程序</a>。</li><li>Linux (Ubuntu, Debian)：<pre><code class="c">sudo apt-get install git-core</code></pre></li><li>Linux (Fedora, Red Hat, CentOS)：<pre><code class="c">sudo yum install git-core</code></pre>安装完成后，在bash中输入<code>git --version</code>验证是否安装成功。</li></ul><hr><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><ul><li>Node.js 为大多数平台提供了官方的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">安装程序</a>。对于中国大陆地区用户，可以前往<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>下载。</li><li>安装完成后，在bash中输入<code>node -v</code>验证是否安装成功。</li></ul><hr><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><ul><li>安装必备应用程序后，即可使用<code>npm</code>（你配吗hahaha开个玩笑）来安装hexo<pre><code class="bash">$ npm install -g hexo-cli</code></pre></li></ul><hr><h1 id="进阶使用-hexo"><a href="#进阶使用-hexo" class="headerlink" title="进阶使用 hexo"></a>进阶使用 hexo</h1><p>安装后，可以使用两种方式执行hexo：</p><ul><li><code>npx hexo &lt;命令&gt;</code></li><li>将 hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;命令&gt;</code>：<pre><code class="bash">echo &#39;PATH=&quot;$PATH:./node_modules/.bin&quot;&#39; &gt;&gt; ~/.profile</code></pre></li></ul><h1 id="hexo真香！"><a href="#hexo真香！" class="headerlink" title="hexo真香！"></a>hexo真香！</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
             
         </tags>
       
@@ -139,31 +239,6 @@
             <tag> 破解 </tag>
             
             <tag> tools </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo安装教程</title>
-      <link href="/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
-      <url>/2020/04/04/hexo%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
-      
-        <content type="html"><![CDATA[<h1 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h1><p>安装hexo之前，需要安装下列应用程序：</p><ul><li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a></li><li><a href="http://git-scm.com/" target="_blank" rel="noopener">Git</a><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2>Windows：下载并安装 <a href="http://git-scm.com/" target="_blank" rel="noopener">Git(官网)</a>或者<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">淘宝 Git for Windows 镜像</a><br>Mac：使用 <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">Homebrew</a>, <a href="http://mxcl.github.com/homebrew/" target="_blank" rel="noopener">MacPorts</a> 或者下载<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">安装程序</a>。<br>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code><br>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2></li><li>Node.js 为大多数平台提供了官方的<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">安装程序</a>。对于中国大陆地区用户，可以前往<a href="https://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">淘宝 Node.js 镜像</a>下载。<ul><li>安装选项还是全部默认，只不过最后一步添加路径时选择<code>Use Git from the Windows Command Prompt</code>，这样我们就可以直接在命令提示符里打开Git了</li><li>安装完成后在命令提示符中输入<code>git --version</code>验证是否安装成功。</li></ul></li></ul><h1 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h1><p>安装必备应用程序后，即可使用<code>npm</code>（你配吗hahaha开个玩笑）安装hexo</p><pre><code class="bash">$ npm install -g hexo-cli</code></pre><h1 id="进阶使用-hexo"><a href="#进阶使用-hexo" class="headerlink" title="进阶使用 hexo"></a>进阶使用 hexo</h1><p>安装后，可以使用两种方式执行hexo：</p><ul><li><code>npx hexo &lt;命令&gt;</code></li><li>将 hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;命令&gt;</code>：</li></ul><pre><code class="bash">echo &#39;PATH=&quot;$PATH:./node_modules/.bin&quot;&#39; &gt;&gt; ~/.profile</code></pre><h1 id="hexo真香！"><a href="#hexo真香！" class="headerlink" title="hexo真香！"></a>hexo真香！</h1>]]></content>
-      
-      
-      <categories>
-          
-          <category> hexo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
             
         </tags>
       
