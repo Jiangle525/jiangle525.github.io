@@ -274,15 +274,15 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a class="color4">操作系统课程实践</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a class="color3">工具</a>
     </li>
     
     <li class="article-tag-list-item">
         <a class="color2">Typora</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">操作系统课程实践</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -445,7 +445,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-04-12 00:11:15'>2020-04-12 00:05</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-16 16:36:16'>2020-04-12 00:05</time>
         
     </div>
     <div class="article-meta">
@@ -480,7 +480,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查看本地端口是否被占用"><span class="toc-text">1.查看本地端口是否被占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-查看本地网络代理"><span class="toc-text">2.查看本地网络代理</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查看本地端口是否被占用"><span class="toc-text">1. 查看本地端口是否被占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-查看本地网络代理"><span class="toc-text">2. 查看本地网络代理</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -501,7 +501,7 @@
 --2020-04-11 23:46:24--  http://jaist.dl.sourceforge.net/project/pcre/pcre/8.33/pcre-8.33.tar.gz
 正在连接 127.0.0.1:8118... 失败：拒绝连接。</code></pre>
 <p><strong>查找问题的方法如下：</strong></p>
-<h3 id="1-查看本地端口是否被占用"><a href="#1-查看本地端口是否被占用" class="headerlink" title="1.查看本地端口是否被占用"></a>1.查看本地端口是否被占用</h3><pre><code class="bash">[root@CentOS7 local]# netstat -ntpl
+<h3 id="1-查看本地端口是否被占用"><a href="#1-查看本地端口是否被占用" class="headerlink" title="1. 查看本地端口是否被占用"></a>1. 查看本地端口是否被占用</h3><pre><code class="bash">[root@CentOS7 local]# netstat -ntpl
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
 tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      1151/cupsd          
@@ -515,7 +515,7 @@ tcp6       0      0 :::111                  :::*                    LISTEN      
 tcp6       0      0 :::22                   :::*                    LISTEN      1150/sshd           
 </code></pre>
 <p>本地端口8118并没有被占用</p>
-<h3 id="2-查看本地网络代理"><a href="#2-查看本地网络代理" class="headerlink" title="2.查看本地网络代理"></a>2.查看本地网络代理</h3><pre><code class="bash">[root@CentOS7 local]# export | grep -i proxy
+<h3 id="2-查看本地网络代理"><a href="#2-查看本地网络代理" class="headerlink" title="2. 查看本地网络代理"></a>2. 查看本地网络代理</h3><pre><code class="bash">[root@CentOS7 local]# export | grep -i proxy
 declare -x ftp_proxy=&quot;http://127.0.0.1:8118&quot;
 declare -x http_proxy=&quot;http://127.0.0.1:8118&quot;
 declare -x https_proxy=&quot;http://127.0.0.1:8118&quot;
@@ -546,7 +546,7 @@ declare -x https_proxy=&quot;http://127.0.0.1:8118&quot;
     <p><span class="copy-title">文章字数:</span><span class="post-count">421</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="故事的大大仙">故事的大大仙</a></p>
     <p><span class="copy-title">发布时间:</span>2020-04-12, 00:05:35</p>
-    <p><span class="copy-title">最后更新:</span>2020-04-12, 00:11:15</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-16, 16:36:16</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/12/wget%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5/" title="CentOS 7 wget 正在连接 127.0.0.1:8118... 失败：拒绝连接。">http://github.com/auligey/auligey.github.io/2020/04/12/wget%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -670,7 +670,7 @@ declare -x https_proxy=&quot;http://127.0.0.1:8118&quot;
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['@江歌','@故事的大大仙','@auligey','#Hexo','#快捷键','#Linux','#CentOS','#github','#工具','#Typora','#操作系统课程实践','#Markdown','#白嫖',],
+            'data': ['@江歌','@故事的大大仙','@auligey','#Hexo','#快捷键','#Linux','#CentOS','#github','#操作系统课程实践','#工具','#Typora','#Markdown','#白嫖',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

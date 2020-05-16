@@ -274,15 +274,15 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a class="color4">操作系统课程实践</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a class="color3">工具</a>
     </li>
     
     <li class="article-tag-list-item">
         <a class="color2">Typora</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">操作系统课程实践</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -445,12 +445,12 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-04-23 23:33:49'>2020-04-07 00:05</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-16 16:38:23'>2020-04-07 00:05</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:776</span>
+        <span>字数:769</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -505,26 +505,43 @@
 <hr>
 <h1 id="三、实验环境"><a href="#三、实验环境" class="headerlink" title="三、实验环境"></a>三、实验环境</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p>
 <hr>
-<h1 id="四、操作方法和步骤"><a href="#四、操作方法和步骤" class="headerlink" title="四、操作方法和步骤"></a>四、操作方法和步骤</h1><h2 id="（1）下载软件包，并解压"><a href="#（1）下载软件包，并解压" class="headerlink" title="（1）下载软件包，并解压"></a>（1）下载软件包，并解压</h2><p>1.下载地址：<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a><br>可以通过<code>Ctrl+F</code>快速查找<br>2.使用<code>tar</code>命令解压文件到/usr/src目录下。执行命令：</p>
+<h1 id="四、操作方法和步骤"><a href="#四、操作方法和步骤" class="headerlink" title="四、操作方法和步骤"></a>四、操作方法和步骤</h1><h2 id="（1）下载软件包，并解压"><a href="#（1）下载软件包，并解压" class="headerlink" title="（1）下载软件包，并解压"></a>（1）下载软件包，并解压</h2><ol>
+<li>下载地址：<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a><br>可以通过<code>Ctrl+F</code>快速查找</li>
+<li>使用<code>tar</code>命令解压文件到/usr/src目录下。执行命令：</li>
+</ol>
 <pre><code class="bash">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre>
-<p>3.解压之后，切换工作目录到<code>/usr/src/linux-4.15.10/</code>，可以是用<code>Tab</code>键补全路径。执行命令：</p>
+<ol start="3">
+<li>解压之后，切换工作目录到<code>/usr/src/linux-4.15.10/</code>，可以是用<code>Tab</code>键补全路径。执行命令：</li>
+</ol>
 <pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre>
-<p>4.后面操作大部分都需要root权限，使用<code>su</code>命令切换用户，输入密码时不会显示。执行命令：</p>
+<ol start="4">
+<li>后面操作大部分都需要root权限，使用<code>su</code>命令切换用户，输入密码时不会显示。执行命令：</li>
+</ol>
 <pre><code class="bash">su root</code></pre>
 <h2 id="（2）修改源程序，增加系统调用"><a href="#（2）修改源程序，增加系统调用" class="headerlink" title="（2）修改源程序，增加系统调用"></a>（2）修改源程序，增加系统调用</h2><p><strong>小提示：</strong> 在vim编辑器里，<code>i</code>字母插入，按<code>esc</code>后输入<code>:wq</code>保存并退出，<code>:q!</code>强制退出</p>
-<p>1.使用vim编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code>文件，添加系统调用号，在普通模式下，<code>shift+g</code>或者<code>G</code>可以直接定位到文尾。执行命令：</p>
+<ol>
+<li>使用vim编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code>文件，添加系统调用号，在普通模式下，<code>shift+g</code>或者<code>G</code>可以直接定位到文尾。执行命令：</li>
+</ol>
 <pre><code class="bash">vim arch/x86/entry/syscalls/syscall_64.tbl</code></pre>
 <p>添加两个没有使用(unuse)的系统调用号，其他格式可以参考文件中的其他系统调用，这里我添加了两个系统调用。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406232920550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加系统调用号">2.使用vim编辑<code>include/linux/syscalls.h</code>文件，添加原型声明。执行命令：</p>
 <pre><code class="bash">vim include/linux/syscalls.h</code></pre>
-<p>不传递参数的时候，void也不能漏写。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233121458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加原型声明"><br>3.使用vim编辑<code>kernel/sys.c</code>文件，实现具体的系统调用。执行命令：</p>
+<p>不传递参数的时候，void也不能漏写。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233121458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加原型声明"></p>
+<ol start="3">
+<li>使用vim编辑<code>kernel/sys.c</code>文件，实现具体的系统调用。执行命令：</li>
+</ol>
 <pre><code class="bash">vim kernel/sys.c</code></pre>
 <p>代码打一遍印象深刻一些，GoGoGo！代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233418258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="系统调用的实现"></p>
 <hr>
 <h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><p>这里就不详细说明了，请参考<a href="https://auligey.github.io/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/" target="_blank" rel="noopener">Linux发行版 CentOS编译内核</a></p>
 <hr>
-<h2 id="（4）测试系统调用"><a href="#（4）测试系统调用" class="headerlink" title="（4）测试系统调用"></a>（4）测试系统调用</h2><p>1.使用vim命令创建测试文件<code>mysyscall.c</code>和<code>mycall.c</code>，下面以mysyscall.c的创建和测试为例。执行命令：</p>
+<h2 id="（4）测试系统调用"><a href="#（4）测试系统调用" class="headerlink" title="（4）测试系统调用"></a>（4）测试系统调用</h2><ol>
+<li>使用vim命令创建测试文件<code>mysyscall.c</code>和<code>mycall.c</code>，下面以mysyscall.c的创建和测试为例。执行命令：</li>
+</ol>
 <pre><code class="bash">vim mysyscall.c</code></pre>
-<p><img src="https://img-blog.csdnimg.cn/20200406233820378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="测试mysyscall"><br>2.使用gcc编译c程序文件<br><em>编译的四个阶段</em></p>
+<p><img src="https://img-blog.csdnimg.cn/20200406233820378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="测试mysyscall"></p>
+<ol start="2">
+<li>使用gcc编译c程序文件<br><em>编译的四个阶段</em></li>
+</ol>
 <ul>
 <li>-E：仅执行编译预处理</li>
 <li>-c：仅执行编译操作，不进行连接操作</li>
@@ -557,10 +574,10 @@
 
 <div class="article_copyright">
     <p><span class="copy-title">文章标题:</span>CentOS 7 添加一个简单的系统调用（内核编译法）</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">776</span></p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">769</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="故事的大大仙">故事的大大仙</a></p>
     <p><span class="copy-title">发布时间:</span>2020-04-07, 00:05:56</p>
-    <p><span class="copy-title">最后更新:</span>2020-04-23, 23:33:49</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-16, 16:38:23</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%95/" title="CentOS 7 添加一个简单的系统调用（内核编译法）">http://github.com/auligey/auligey.github.io/2020/04/07/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%95/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -684,7 +701,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['@江歌','@故事的大大仙','@auligey','#Hexo','#快捷键','#Linux','#CentOS','#github','#工具','#Typora','#操作系统课程实践','#Markdown','#白嫖',],
+            'data': ['@江歌','@故事的大大仙','@auligey','#Hexo','#快捷键','#Linux','#CentOS','#github','#操作系统课程实践','#工具','#Typora','#Markdown','#白嫖',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
