@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>白嫖系列——WebStorm</title>
+      <link href="/2020/05/16/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94WebStorm/"/>
+      <url>/2020/05/16/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94WebStorm/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>仅供学习交流使用，请支持正版，谢谢合作（白嫖，它不香么？）</p></blockquote><h1 id="1-下载软件"><a href="#1-下载软件" class="headerlink" title="1. 下载软件"></a>1. 下载软件</h1><p>官方下载地址：<a href="https://www.jetbrains.com/webstorm/download/" target="_blank" rel="noopener">https://www.jetbrains.com/webstorm/download/</a></p><p>百度网盘下载链接：<a href="https://pan.baidu.com/s/19h9uKAeJJJ08-n4K-5misg" target="_blank" rel="noopener">https://pan.baidu.com/s/19h9uKAeJJJ08-n4K-5misg</a><br>提取码：<code>4x6n</code></p><h1 id="2-下载白嫖包"><a href="#2-下载白嫖包" class="headerlink" title="2. 下载白嫖包"></a>2. 下载白嫖包</h1><p>百度网盘下载链接：<a href="https://pan.baidu.com/s/1iLCAYK1-k0js8Mjc3Lb2RA" target="_blank" rel="noopener">https://pan.baidu.com/s/1iLCAYK1-k0js8Mjc3Lb2RA</a><br>提取码：<code>mmx9</code></p><h1 id="3-引入包"><a href="#3-引入包" class="headerlink" title="3. 引入包"></a>3. 引入包</h1><ol><li>鼠标右键点击WebStorm的图标，点击<code>打开文件所在位置</code>，将这三个文件复制到安装目录下。</li></ol><p><img src="https://img-blog.csdnimg.cn/20200516161539883.png#pic_center" alt="破解文件"></p><ol><li><p>鼠标右键点击<code>地址栏</code>，点击<code>复制地址</code>，我这里的地址为：</p><pre><code class="bash">D:\Program Files\JetBrains\WebStorm 2018.2.3\bin</code></pre></li><li><p>用记事本打开<code>webstorm.exe.vmoptions</code>文件，把最后一行改成：</p><pre><code class="bash">-javaagent:刚刚复制的地址\JetbrainsCrack.jar</code></pre></li><li><p>以同样的方式修改<code>webstorm64.exe.vmoptions</code> 文件。</p></li></ol><h1 id="4-输入激活码"><a href="#4-输入激活码" class="headerlink" title="4. 输入激活码"></a>4. 输入激活码</h1><ol><li>打开我分享的<code>激活码.txt</code>，<code>Ctrl+A</code>全选，<code>Ctrl+C</code>复制</li></ol><p><img src="https://img-blog.csdnimg.cn/20200516161618993.png#pic_center" alt="激活码"></p><ol start="2"><li>打开WebStorm，输入激活码。激活完成！</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 白嫖系列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+            <tag> 白嫖 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Typora基础教程——快捷键篇</title>
+      <link href="/2020/05/16/Typora%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%E2%80%94%E2%80%94%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AF%87/"/>
+      <url>/2020/05/16/Typora%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B%E2%80%94%E2%80%94%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Typora常用快捷键"><a href="#Typora常用快捷键" class="headerlink" title="Typora常用快捷键"></a>Typora常用快捷键</h1><h2 id="视图操作快捷"><a href="#视图操作快捷" class="headerlink" title="视图操作快捷"></a>视图操作快捷</h2><table><thead><tr><th align="center">功能</th><th align="center">快捷键</th></tr></thead><tbody><tr><td align="center">大纲视图</td><td align="center">Ctrl+Shift+1</td></tr><tr><td align="center">文件列表视图</td><td align="center">Ctrl+Shift+2</td></tr><tr><td align="center">放大视图</td><td align="center">Ctrl+Shift+‘+’</td></tr><tr><td align="center">缩小视图</td><td align="center">Ctrl+Shift+‘-’</td></tr><tr><td align="center">源代码模式</td><td align="center">Ctrl+/</td></tr><tr><td align="center">专注模式(当前编辑行为黑，其他行为灰色)</td><td align="center">F8</td></tr><tr><td align="center">打字机模式(光标始终在屏幕中央位置)</td><td align="center">F9</td></tr></tbody></table><h2 id="标题段落快捷键"><a href="#标题段落快捷键" class="headerlink" title="标题段落快捷键"></a>标题段落快捷键</h2><p><code>MarkDown</code>支持6级标题，可以使用<code>Ctrl+数字</code> 指定不同层次的标题和段落</p><table><thead><tr><th align="center">功能</th><th align="center">快捷键</th></tr></thead><tbody><tr><td align="center">正文</td><td align="center">Ctrl + 0</td></tr><tr><td align="center">1级标题</td><td align="center">Ctrl + 1</td></tr><tr><td align="center">2级标题</td><td align="center">Ctrl + 2</td></tr><tr><td align="center">k级标题</td><td align="center">Ctrl + k</td></tr><tr><td align="center">6级标题</td><td align="center">Ctrl + 6</td></tr><tr><td align="center">提升标题级别</td><td align="center">Ctrl + ‘+’</td></tr><tr><td align="center">降低标题级别</td><td align="center">Ctrl + ‘-</td></tr></tbody></table><h2 id="字体操作快捷键"><a href="#字体操作快捷键" class="headerlink" title="字体操作快捷键"></a>字体操作快捷键</h2><table><thead><tr><th align="center">功能</th><th align="center">快捷键</th></tr></thead><tbody><tr><td align="center">字体加粗</td><td align="center">Ctrl + B</td></tr><tr><td align="center">下划线</td><td align="center">Ctrl + U</td></tr><tr><td align="center">倾斜</td><td align="center">Ctrl + I</td></tr><tr><td align="center">删除线</td><td align="center">Alt + Shift + 5</td></tr></tbody></table><h2 id="插入功能快捷键"><a href="#插入功能快捷键" class="headerlink" title="插入功能快捷键"></a>插入功能快捷键</h2><table><thead><tr><th align="center">功能</th><th align="center">快捷键</th></tr></thead><tbody><tr><td align="center">插入图片</td><td align="center">Ctrl+Shift+I</td></tr><tr><td align="center">插入表格</td><td align="center">Ctrl+T</td></tr><tr><td align="center">插入有序列表</td><td align="center">Ctrl+Shift+[</td></tr><tr><td align="center">插入无序列表</td><td align="center">Ctrl+Shift+]</td></tr><tr><td align="center">插入超链接</td><td align="center">Ctrl+K</td></tr><tr><td align="center">插入代码片</td><td align="center">Ctrl+Shift+`</td></tr><tr><td align="center">插入代码块</td><td align="center">Ctrl+Shift+K</td></tr><tr><td align="center">插入公式块</td><td align="center">Ctrl+Shift+M</td></tr><tr><td align="center">插入引用块</td><td align="center">Ctrl+Shift+Q</td></tr></tbody></table><h2 id="表格扩展快捷键"><a href="#表格扩展快捷键" class="headerlink" title="表格扩展快捷键"></a>表格扩展快捷键</h2><table><thead><tr><th align="center">功能</th><th align="center">快捷键</th></tr></thead><tbody><tr><td align="center">下方插入行</td><td align="center">Ctrl+Enter（回车）</td></tr><tr><td align="center">删除该行</td><td align="center">Shift+Ctrl+BackSpace（退格）</td></tr><tr><td align="center">上移该行</td><td align="center">Shift+Ctrl+↑</td></tr><tr><td align="center">下移该行</td><td align="center">Shift+Ctrl+↓</td></tr><tr><td align="center">左移该列</td><td align="center">Shift+Ctrl+←</td></tr><tr><td align="center">右移该列</td><td align="center">Shift+Ctrl+→</td></tr></tbody></table><h2 id="跳转操作"><a href="#跳转操作" class="headerlink" title="跳转操作"></a>跳转操作</h2><table><thead><tr><th align="center">功能</th><th align="center">快捷键</th></tr></thead><tbody><tr><td align="center">跳转到文首</td><td align="center">Ctrl+Home<br />Ctrl+Fn+←</td></tr><tr><td align="center">跳转到所选内容</td><td align="center">Ctrl+J</td></tr><tr><td align="center">跳转到文末</td><td align="center">Ctrl+End<br />Ctrl+Fn+→</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Typora </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+            <tag> Typora </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CentOS 7 添加一个简单的系统调用（内核模块法）</title>
       <link href="/2020/04/23/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E7%94%A8-%E6%A8%A1%E5%9D%97%E6%B3%95/"/>
       <url>/2020/04/23/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E7%94%A8-%E6%A8%A1%E5%9D%97%E6%B3%95/</url>
@@ -270,7 +324,7 @@
       <link href="/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94xmind%208/"/>
       <url>/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94xmind%208/</url>
       
-        <content type="html"><![CDATA[<h1 id="如何优雅的白嫖xmind-8-？"><a href="#如何优雅的白嫖xmind-8-？" class="headerlink" title="如何优雅的白嫖xmind 8 ？"></a>如何优雅的白嫖xmind 8 ？</h1><blockquote><p>仅供学习交流使用，请支持正版，谢谢合作（白嫖，它不香么？）</p></blockquote><h1 id="1-在官网下载xmind最新的版本，安装软件"><a href="#1-在官网下载xmind最新的版本，安装软件" class="headerlink" title="1.在官网下载xmind最新的版本，安装软件"></a>1.在官网下载xmind最新的版本，安装软件</h1><p>官网地址：<a href="https://www.xmind.cn/download/xmind8" target="_blank" rel="noopener">https://www.xmind.cn/download/xmind8</a><br>本文用的是XMind 8 Update 9</p><h1 id="2-下载软件包"><a href="#2-下载软件包" class="headerlink" title="2.下载软件包"></a>2.下载软件包</h1><p>链接：<code>https://pan.baidu.com/s/1bOzNQOPBI-cjV39uUUsdtA</code><br>提取码：<code>j6li</code> </p><h1 id="3-找到安装目录"><a href="#3-找到安装目录" class="headerlink" title="3. 找到安装目录"></a>3. 找到安装目录</h1><p>本文的是：<code>D:\Program Files (x86)\XMind</code><br>如果找不到，可以通过鼠标右键xmind图标–&gt;打开文件所在位置<br><img src="/img/%E6%9F%A5%E6%89%BExmind%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE.png" alt="查找xmind安装位置"></p><h1 id="4-打开我分享的文件"><a href="#4-打开我分享的文件" class="headerlink" title="4.打开我分享的文件"></a>4.打开我分享的文件</h1><p><img src="/img/%E6%9F%A5%E6%89%BExmind%E7%A0%B4%E8%A7%A3%E6%96%87%E4%BB%B6.png" alt="查找xmind破解文件"><br>找到这个<code>.jar</code>的文件，复制到xmind的安装目录（第3步中的安装路径）</p><h1 id="5-修改xmind配置文件-xmind-ini"><a href="#5-修改xmind配置文件-xmind-ini" class="headerlink" title="5.修改xmind配置文件(xmind.ini)"></a>5.修改xmind配置文件(xmind.ini)</h1><p> 在安装目录下，找到xmind.ini文件，用记事本打开<br> 在最后<strong>添加一句代码</strong></p><pre><code class="bash">-javaagent:D:\Program Files(x86)\XMind\XMindCrack.jar</code></pre><p>并<strong>保存文件</strong><br><strong>注意：</strong> <code>-javaagent:</code>后面为<code>XMindCrack.jar</code>文件的路径，<strong>冒号要使用英文</strong></p><h1 id="6-打开安装后的xmind"><a href="#6-打开安装后的xmind" class="headerlink" title="6.打开安装后的xmind"></a>6.打开安装后的xmind</h1><p>在<strong>菜单栏</strong>找到 “帮助” –&gt; “序列号”，填写<strong>邮箱</strong>和<strong>序列号</strong><br>邮箱随便填写一个正确的格式，也可以填写你自己的邮箱<br>打开我分享的文件<code>xmind激活序列号.txt</code>，复制粘贴上去<br><img src="/img/%E8%8E%B7%E5%8F%96xmind%E6%BF%80%E6%B4%BB%E5%BA%8F%E5%88%97%E5%8F%B7.png" alt="获取xmind激活序列号"></p><p><strong>激活成功<br>放肆的使用吧！</strong></p><p><strong>PS：</strong></p><p>仅供学习交流使用，任何人不得以商业盈利为目的，否则一切责任自己承担！</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="如何优雅的白嫖xmind-8-？"><a href="#如何优雅的白嫖xmind-8-？" class="headerlink" title="如何优雅的白嫖xmind 8 ？"></a>如何优雅的白嫖xmind 8 ？</h1><blockquote><p>仅供学习交流使用，请支持正版，谢谢合作（白嫖，它不香么？）</p></blockquote><h1 id="1-在官网下载xmind最新的版本，安装软件"><a href="#1-在官网下载xmind最新的版本，安装软件" class="headerlink" title="1.在官网下载xmind最新的版本，安装软件"></a>1.在官网下载xmind最新的版本，安装软件</h1><p>官网地址：<a href="https://www.xmind.cn/download/xmind8" target="_blank" rel="noopener">https://www.xmind.cn/download/xmind8</a><br>本文用的是XMind 8 Update 9</p><h1 id="2-下载软件包"><a href="#2-下载软件包" class="headerlink" title="2.下载软件包"></a>2.下载软件包</h1><p>链接：<a href="https://pan.baidu.com/s/1TdcEU6RYYvAmpoMkpBj8MA" target="_blank" rel="noopener">https://pan.baidu.com/s/1TdcEU6RYYvAmpoMkpBj8MA</a><br>提取码：<code>3nbc</code> </p><h1 id="3-找到安装目录"><a href="#3-找到安装目录" class="headerlink" title="3. 找到安装目录"></a>3. 找到安装目录</h1><p>本文的是：<code>D:\Program Files (x86)\XMind</code><br>如果找不到，可以通过鼠标右键xmind图标–&gt;打开文件所在位置<br><img src="/img/%E6%9F%A5%E6%89%BExmind%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE.png" alt="查找xmind安装位置"></p><h1 id="4-打开我分享的文件"><a href="#4-打开我分享的文件" class="headerlink" title="4.打开我分享的文件"></a>4.打开我分享的文件</h1><p><img src="/img/%E6%9F%A5%E6%89%BExmind%E7%A0%B4%E8%A7%A3%E6%96%87%E4%BB%B6.png" alt="查找xmind破解文件"><br>找到这个<code>.jar</code>的文件，复制到xmind的安装目录（第3步中的安装路径）</p><h1 id="5-修改xmind配置文件-xmind-ini"><a href="#5-修改xmind配置文件-xmind-ini" class="headerlink" title="5.修改xmind配置文件(xmind.ini)"></a>5.修改xmind配置文件(xmind.ini)</h1><p> 在安装目录下，找到xmind.ini文件，用记事本打开<br> 在最后<strong>添加一句代码</strong></p><pre><code class="bash">-javaagent:D:\Program Files(x86)\XMind\XMindCrack.jar</code></pre><p>并<strong>保存文件</strong><br><strong>注意：</strong> <code>-javaagent:</code>后面为<code>XMindCrack.jar</code>文件的路径，<strong>冒号要使用英文</strong></p><h1 id="6-打开安装后的xmind"><a href="#6-打开安装后的xmind" class="headerlink" title="6.打开安装后的xmind"></a>6.打开安装后的xmind</h1><p>在<strong>菜单栏</strong>找到 “帮助” –&gt; “序列号”，填写<strong>邮箱</strong>和<strong>序列号</strong><br>邮箱随便填写一个正确的格式，也可以填写你自己的邮箱<br>打开我分享的文件<code>xmind激活序列号.txt</code>，复制粘贴上去<br><img src="/img/%E8%8E%B7%E5%8F%96xmind%E6%BF%80%E6%B4%BB%E5%BA%8F%E5%88%97%E5%8F%B7.png" alt="获取xmind激活序列号"></p><p><strong>激活成功<br>放肆的使用吧！</strong></p><p><strong>PS：</strong></p><p>仅供学习交流使用，任何人不得以商业盈利为目的，否则一切责任自己承担！</p>]]></content>
       
       
       <categories>
@@ -285,10 +339,6 @@
             <tag> 工具 </tag>
             
             <tag> 白嫖 </tag>
-            
-            <tag> 破解 </tag>
-            
-            <tag> tools </tag>
             
         </tags>
       
