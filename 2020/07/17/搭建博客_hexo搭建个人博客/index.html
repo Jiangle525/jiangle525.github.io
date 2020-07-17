@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Linux日常学习——ls命令 | 故事的大大仙</title>
-  <meta name="keywords" content=" Linux , Linux命令 ">
-  <meta name="description" content="Linux日常学习——ls命令 | 故事的大大仙">
+  <title>hexo搭建个人博客 | 故事的大大仙</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="hexo搭建个人博客 | 故事的大大仙">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
@@ -471,9 +471,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-Linux_ls命令" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-搭建博客_hexo搭建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Linux日常学习——ls命令</h1>
+        <h1 class="article-title">hexo搭建个人博客</h1>
     
     <div class="article-meta">
         
@@ -483,28 +483,20 @@
         
         <span class="book">
             
-                <a  data-rel="Linux">Linux</a>
+                <a  data-rel="搭建博客">搭建博客</a>
             
         </span>
         
         
-        <span class="tag">
-            
-            <a class="color1">Linux</a>
-            
-            <a class="color3">Linux命令</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-07-17 17:17:03'>2020-07-17 16:25</time>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-07-15 18:19:59'>2020-06-12 21:55</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:366</span>
+        <span>字数:728</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -534,7 +526,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-介绍"><span class="toc-text">1. 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-命令格式"><span class="toc-text">2. 命令格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-参数介绍"><span class="toc-text">3. 参数介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#范例"><span class="toc-text">范例</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-初始化项目"><span class="toc-text">1. 初始化项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-更换主题"><span class="toc-text">2. 更换主题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-下载地址"><span class="toc-text">2.1 下载地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-配置主题"><span class="toc-text">2.2 配置主题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-上传到github"><span class="toc-text">3. 上传到github</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-技巧"><span class="toc-text">4. 技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-快捷命令"><span class="toc-text">4.1 快捷命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-博客备份（快捷命令升级版）"><span class="toc-text">4.2 博客备份（快捷命令升级版）</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -550,74 +542,72 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><div class='inner-toc'><h2>目录</h2><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-介绍"><span class="toc-text">1. 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-命令格式"><span class="toc-text">2. 命令格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-参数介绍"><span class="toc-text">3. 参数介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#范例"><span class="toc-text">范例</span></a></li></ol></div></p>
-<h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h1><blockquote>
-<p><code>ls</code>是Linux下非常常用的命令，它是list的缩写，用于显示指定工作目录下的内容，以及文件和目录的权限等等。</p>
+        <p><div class='inner-toc'><h2>目录</h2><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-初始化项目"><span class="toc-text">1. 初始化项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-更换主题"><span class="toc-text">2. 更换主题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-下载地址"><span class="toc-text">2.1 下载地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-配置主题"><span class="toc-text">2.2 配置主题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-上传到github"><span class="toc-text">3. 上传到github</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-技巧"><span class="toc-text">4. 技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-快捷命令"><span class="toc-text">4.1 快捷命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-博客备份（快捷命令升级版）"><span class="toc-text">4.2 博客备份（快捷命令升级版）</span></a></li></ol></li></ol></div></p>
+<blockquote>
+<p>hexo安装好之后，就可以开始搭建属于自己的博客了。如果没有安装hexo，参考文章：<a href="/2020/04/04/Hexo_hexo安装教程/">hexo安装教程</a></p>
 </blockquote>
-<h1 id="2-命令格式"><a href="#2-命令格式" class="headerlink" title="2. 命令格式"></a>2. 命令格式</h1><pre><code class="bash">$ ls \[选项] [目录名]</code></pre>
-<h1 id="3-参数介绍"><a href="#3-参数介绍" class="headerlink" title="3. 参数介绍"></a>3. 参数介绍</h1><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-a,–all</td>
-<td>列出目录下的所有文件，包括以 . 开头的隐含文件</td>
-</tr>
-<tr>
-<td>-A</td>
-<td>同-a，但不列出“.”(表示当前目录)和“..”(表示当前目录的父目录)。</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来。</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>将文件依建立时间之先后次序列出</td>
-</tr>
-<tr>
-<td>-r, –reverse</td>
-<td>依相反次序排列(原定依英文字母次序)</td>
-</tr>
-<tr>
-<td>-R, –recursive</td>
-<td>同时列出所有子目录层</td>
-</tr>
-<tr>
-<td>-s,–size</td>
-<td>以块大小为单位列出所有文件的大小</td>
-</tr>
-<tr>
-<td>-S</td>
-<td>根据文件大小排序</td>
-</tr>
-<tr>
-<td>-F</td>
-<td>在列出的文件名称后加一符号；例如可执行档则加 “*”, 目录则加 “/“</td>
-</tr>
-</tbody></table>
-<h1 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h1><ol>
-<li>列出根目录（/）下的所有目录：</li>
+<h1 id="1-初始化项目"><a href="#1-初始化项目" class="headerlink" title="1. 初始化项目"></a>1. 初始化项目</h1><ul>
+<li><p>为你的博客创建一个新的文件夹，该文件夹未来就是你博客放代码的地方，随便放哪都行。比如我的是：<code>D:\MyBolg</code>，创建命令如下：</p>
+<pre><code>hexo init /d/mybolg            # Windows命令行不区分大小写</code></pre></li>
+<li><p>初始化后，目录结构如下：</p>
+<pre><code class="bash">.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+└── themes</code></pre>
+<ol>
+<li><p>_config.yml是总配置文件，里面可以修改很多东西，建议里面的所有设置都可以看看，根据里面的注释进行响应的改动，这里就不展开了。</p>
+</li>
+<li><p>themes目录下会自动生成一个默认的主题<code>landscape</code>，并且在source/_post目录下也自动生成了第一篇博客<code>hello-world</code></p>
+</li>
 </ol>
-<pre><code class="bash"># ls /
-bin               dev   lib         media  net   root     srv  upload  www
-boot              etc   lib64       misc   opt   sbin     sys  usr
-home  lost+found  mnt    proc  selinux  tmp  var</code></pre>
-<ol start="2">
-<li>列出目前工作目录下所有名称是 s 开头的文件，越新的排越后面 :</li>
+</li>
+<li><p>启动本地预览服务命令：<code>hexo s</code>，然后在浏览器访问<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000</a>即可看到默认的博客内容</p>
+<p><strong>小妙招：可以使用<code>hexo -h</code>查看hexo命令格式以及选项</strong></p>
+</li>
+</ul>
+<h1 id="2-更换主题"><a href="#2-更换主题" class="headerlink" title="2. 更换主题"></a>2. 更换主题</h1><h2 id="2-1-下载地址"><a href="#2-1-下载地址" class="headerlink" title="2.1 下载地址"></a>2.1 下载地址</h2><ul>
+<li>hexo主题下载地址：<a href="https://hexo.io/themes/#simple" target="_blank" rel="noopener"><a href="https://hexo.io/themes/#simple" target="_blank" rel="noopener">https://hexo.io/themes/#simple</a></a></li>
+<li>选择一个你喜欢的主题，将其下载并保存到<code>themes/</code>目录下。比如下载的主题为xxx，其相对于博客主目录的路径为<code>themes/xxx</code></li>
+</ul>
+<h2 id="2-2-配置主题"><a href="#2-2-配置主题" class="headerlink" title="2.2 配置主题"></a>2.2 配置主题</h2><ul>
+<li>将<code>_config.yml</code>中<code>theme: landscape</code>修改为<code>theme: xxx</code>，执行<code>hexo g</code>重新生成一下，g就表示generate选项。</li>
+<li>如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下public的内容，然后再来重新生成和发布。</li>
+</ul>
+<h1 id="3-上传到github"><a href="#3-上传到github" class="headerlink" title="3. 上传到github"></a>3. 上传到github</h1><ul>
+<li><p>修改_config.yml文件的deploy，直接修改一下yourname部分就可以了</p>
+<pre><code class="bash">deploy:
+  type: git
+  repository: git@github.com:yourname/yourname.github.io.git
+  branch: master</code></pre>
+</li>
+<li><p>使用hexo deploy将本次改动的代码全部提交到github上</p>
+</li>
+</ul>
+<h1 id="4-技巧"><a href="#4-技巧" class="headerlink" title="4. 技巧"></a>4. 技巧</h1><h2 id="4-1-快捷命令"><a href="#4-1-快捷命令" class="headerlink" title="4.1 快捷命令"></a>4.1 快捷命令</h2><ul>
+<li><p>其实就通过 alias，触发一些命令的集合<br>在 <code>~/.bashrc</code> 文件中添加</p>
+<pre><code>alias hs=&#39;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&#39;  #启动本地服务
+alias hd=&#39;hexo clean &amp;&amp; hexo g &amp;&amp; hexo d&#39;  #部署博客</code></pre><p>甚至你也可以加入备份文章的命令，可以自由发挥。</p>
+</li>
+</ul>
+<h2 id="4-2-博客备份（快捷命令升级版）"><a href="#4-2-博客备份（快捷命令升级版）" class="headerlink" title="4.2 博客备份（快捷命令升级版）"></a>4.2 博客备份（快捷命令升级版）</h2><ul>
+<li>为了保证我们写的文章不丢失、快速迁移博客，都需要备份我们的 blog</li>
+</ul>
+<ol>
+<li><p>博客根目录，执行 <code>git init</code> 创建 git 仓库</p>
+</li>
+<li><p>在 github（或其他托管平台、自建远程仓库等） 创建仓库并和本地仓库建立联系</p>
+</li>
+<li><p>在<code>~/.bashrc</code>文件中添加</p>
+<pre><code>alias hs=&#39;hexo clean &amp;&amp; hexo g &amp;&amp; hexo s&#39;
+alias hd=&#39;hexo clean &amp;&amp; hexo g &amp;&amp; hexo d &amp;&amp; git add . &amp;&amp; git commit -m &quot;update&quot; &amp;&amp; git push -f&#39;</code></pre></li>
 </ol>
-<pre><code class="bash">ls -ltr s*</code></pre>
-<ol start="3">
-<li>将 /bin 目录以下所有目录及文件详细资料列出 :</li>
-</ol>
-<pre><code class="bash">ls -lR /bin</code></pre>
-<ol start="4">
-<li>列出目前工作目录下所有文件及目录；目录于名称后加 “/“, 可执行档于名称后加 “*” :</li>
-</ol>
-<pre><code class="bash">ls -AF</code></pre>
+<ul>
+<li>这样，我们在执行<code>hs</code>启动本地预览服务，当执行 <code>hd</code> 进行部署时，就一同将博客进行备份了</li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源。欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至auligey@gmail.com </span>
@@ -631,12 +621,12 @@ home  lost+found  mnt    proc  selinux  tmp  var</code></pre>
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Linux日常学习——ls命令</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">382</span></p>
+    <p><span class="copy-title">文章标题:</span>hexo搭建个人博客</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">778</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="故事的大大仙">故事的大大仙</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-06-12, 21:55:33</p>
-    <p><span class="copy-title">最后更新:</span>2020-07-15, 18:19:59</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/06/12/Linux_ls%E5%91%BD%E4%BB%A4/" title="Linux日常学习——ls命令">http://github.com/auligey/auligey.github.io/2020/06/12/Linux_ls%E5%91%BD%E4%BB%A4/</a>
+    <p><span class="copy-title">发布时间:</span>2020-07-17, 16:25:53</p>
+    <p><span class="copy-title">最后更新:</span>2020-07-17, 17:17:03</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/07/17/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2_hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="hexo搭建个人博客">http://github.com/auligey/auligey.github.io/2020/07/17/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2_hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
