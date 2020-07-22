@@ -157,11 +157,11 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(19)</small></div></li>
+    <li><div class="all active">全部文章<small>(20)</small></div></li>
     
         
             
-            <li><div data-rel="Hexo">Hexo<small>(3)</small></div>
+            <li><div data-rel="Hexo">Hexo<small>(5)</small></div>
                 
             </li>
             
@@ -169,7 +169,7 @@
     
         
             
-            <li><div data-rel="Linux">Linux<small>(9)</small></div>
+            <li><div data-rel="Linux">Linux<small>(10)</small></div>
                 
             </li>
             
@@ -193,14 +193,6 @@
     
         
             
-            <li><div data-rel="搭建博客">搭建博客<small>(2)</small></div>
-                
-            </li>
-            
-        
-    
-        
-            
             <li><div data-rel="白嫖系列">白嫖系列<small>(2)</small></div>
                 
             </li>
@@ -217,7 +209,7 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="19">
+<input type="hidden" id="yelog_site_posts_number" value="20">
 <input type="hidden" id="yelog_site_word_count" value="11.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -270,6 +262,10 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a class="color2">github</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a class="color4">操作系统课程实践</a>
     </li>
     
@@ -290,10 +286,6 @@
     </li>
     
     <li class="article-tag-list-item">
-        <a class="color2">github</a>
-    </li>
-    
-    <li class="article-tag-list-item">
         <a class="color3">白嫖</a>
     </li>
     
@@ -307,8 +299,16 @@
     
     <nav id="title-list-nav">
         
-        <a  class="搭建博客 "
-           href="/2020/07/17/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2_hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"
+        <a  class="Linux "
+           href="/2020/07/17/Linux_vim%E5%91%BD%E4%BB%A4/"
+           data-tag="Linux,Linux命令"
+           data-author="江歌" >
+            <span class="post-title" title="Linux_vim命令">Linux_vim命令</span>
+            <span class="post-date" title="2020-07-17 17:19:56">2020/07/17</span>
+        </a>
+        
+        <a  class="Hexo "
+           href="/2020/07/17/Hexo_hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"
            data-tag=""
            data-author="江歌" >
             <span class="post-title" title="hexo搭建个人博客">hexo搭建个人博客</span>
@@ -379,8 +379,8 @@
             <span class="post-date" title="2020-04-23 23:32:35">2020/04/23</span>
         </a>
         
-        <a  class="搭建博客 "
-           href="/2020/04/15/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2_GithubPages%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"
+        <a  class="Hexo "
+           href="/2020/04/15/Hexo_GithubPages%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"
            data-tag="github"
            data-author="江歌" >
             <span class="post-title" title="GithubPages入门教程">GithubPages入门教程</span>
@@ -647,11 +647,11 @@
 <script type="text/javascript">
     $.getScript('/js/gitalk.js', function () {
         var gitalk = new Gitalk({
-            clientID: '',
-            clientSecret: '',
-            repo: 'auligey.github.io',
-            owner: 'auligey',
-            admin: ['auligey'],
+            clientID: '4b28020f197af9af5c4b',
+            clientSecret: '8c75e1c58386e030d873b4e49eb09df03402c921',
+            repo: 'https://auligey.github.io',
+            owner: 'Auligey',
+            admin: ['Auligey'],
             id: decodeURI(location.pathname),
             distractionFreeMode: 'true',
             language: 'zh-CN',
@@ -756,7 +756,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['@江歌','@故事的大大仙','@auligey','#Hexo','#快捷键','#Linux','#CentOS','#操作系统课程实践','#Linux命令','#Markdown','#工具','#Typora','#github','#白嫖',],
+            'data': ['@江歌','@故事的大大仙','@auligey','#Hexo','#快捷键','#Linux','#CentOS','#github','#操作系统课程实践','#Linux命令','#Markdown','#工具','#Typora','#白嫖',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
@@ -943,11 +943,13 @@
     
     .post {
         background: url(/img/other_bg_img.jpg);
+		
     }
     
     
-    .post.index {
+    .post.index{
         background: url(/img/index_bg_img.jpg);
+		
     }
     
 
