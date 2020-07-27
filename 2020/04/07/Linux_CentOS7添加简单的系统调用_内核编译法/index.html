@@ -372,7 +372,7 @@
         </a>
         
         <a  class="Linux "
-           href="/2020/04/23/Linux_CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E7%94%A8-%E6%A8%A1%E5%9D%97%E6%B3%95/"
+           href="/2020/04/23/Linux_CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97%E6%B3%95/"
            data-tag="Linux,CentOS"
            data-author="江歌" >
             <span class="post-title" title="CentOS 7 添加一个简单的系统调用（内核模块法）">CentOS 7 添加一个简单的系统调用（内核模块法）</span>
@@ -452,7 +452,7 @@
         </a>
         
         <a  class="白嫖系列 "
-           href="/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97_xmind%208/"
+           href="/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97_Xmind8/"
            data-tag="工具,白嫖"
            data-author="江歌" >
             <span class="post-title" title="白嫖系列——xmind 8">白嫖系列——xmind 8</span>
@@ -499,7 +499,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-06-12 21:43:06'>2020-04-07 00:05</time>
+        创建时间:<time class="date" title='更新时间: 2020-07-27 20:19:36'>2020-04-07 00:05</time>
         
     </div>
     <div class="article-meta">
@@ -551,15 +551,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><div class='inner-toc'><h2>目录</h2><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、实验目的"><span class="toc-text">一、实验目的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、实验内容"><span class="toc-text">二、实验内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、实验环境"><span class="toc-text">三、实验环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、操作方法和步骤"><span class="toc-text">四、操作方法和步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（1）下载软件包，并解压"><span class="toc-text">（1）下载软件包，并解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（2）修改源程序，增加系统调用"><span class="toc-text">（2）修改源程序，增加系统调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（3）编译内核"><span class="toc-text">（3）编译内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（4）测试系统调用"><span class="toc-text">（4）测试系统调用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、总结"><span class="toc-text">五、总结</span></a></li></ol></div></p>
-<hr>
-<h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><ol>
+<h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><blockquote>
+<ol>
 <li>学习Linux的内核的系统调用。</li>
 <li>理解、掌握Linux系统调用的实现框架、用户界面、参数传递、进入/返回过程。</li>
 </ol>
-<h1 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h1><p>在系统调用中添加一个不用传递参数的系统调用，实现一个简单的系统调用的添加。执行这个系统调用，在屏幕上显示输出“Hello World! ”。</p>
-<hr>
-<h1 id="三、实验环境"><a href="#三、实验环境" class="headerlink" title="三、实验环境"></a>三、实验环境</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p>
-<hr>
+</blockquote>
+<h1 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h1><blockquote>
+<p>在系统调用中添加一个不用传递参数的系统调用，实现一个简单的系统调用的添加。执行这个系统调用，在屏幕上显示输出“Hello World! ”。</p>
+</blockquote>
+<h1 id="三、实验环境"><a href="#三、实验环境" class="headerlink" title="三、实验环境"></a>三、实验环境</h1><blockquote>
+<p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p>
+</blockquote>
 <h1 id="四、操作方法和步骤"><a href="#四、操作方法和步骤" class="headerlink" title="四、操作方法和步骤"></a>四、操作方法和步骤</h1><h2 id="（1）下载软件包，并解压"><a href="#（1）下载软件包，并解压" class="headerlink" title="（1）下载软件包，并解压"></a>（1）下载软件包，并解压</h2><ol>
 <li>下载地址：<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a><br>可以通过<code>Ctrl+F</code>快速查找</li>
 <li>使用<code>tar</code>命令解压文件到/usr/src目录下。执行命令：</li>
@@ -578,22 +581,21 @@
 <li>使用vim编辑<code>arch/x86/entry/syscalls/syscall_64.tbl</code>文件，添加系统调用号，在普通模式下，<code>shift+g</code>或者<code>G</code>可以直接定位到文尾。执行命令：</li>
 </ol>
 <pre><code class="bash">vim arch/x86/entry/syscalls/syscall_64.tbl</code></pre>
-<p>添加两个没有使用(unuse)的系统调用号，其他格式可以参考文件中的其他系统调用，这里我添加了两个系统调用。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406232920550.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加系统调用号">2.使用vim编辑<code>include/linux/syscalls.h</code>文件，添加原型声明。执行命令：</p>
+<p>添加两个没有使用(unuse)的系统调用号，其他格式可以参考文件中的其他系统调用，这里我添加了两个系统调用。代码如下：<br><img src="/img/article_img/Linux/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%951.png#pic_center" alt="添加系统调用号"></p>
+<p>2.使用vim编辑<code>include/linux/syscalls.h</code>文件，添加原型声明。执行命令：</p>
 <pre><code class="bash">vim include/linux/syscalls.h</code></pre>
-<p>不传递参数的时候，void也不能漏写。代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233121458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="添加原型声明"></p>
+<p>不传递参数的时候，void也不能漏写。代码如下：<br><img src="/img/article_img/Linux/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%952.png#pic_center" alt="添加原型声明"></p>
 <ol start="3">
 <li>使用vim编辑<code>kernel/sys.c</code>文件，实现具体的系统调用。执行命令：</li>
 </ol>
 <pre><code class="bash">vim kernel/sys.c</code></pre>
-<p>代码打一遍印象深刻一些，GoGoGo！代码如下：<br><img src="https://img-blog.csdnimg.cn/20200406233418258.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="系统调用的实现"></p>
-<hr>
+<p>代码打一遍印象深刻一些，GoGoGo！代码如下：<br><img src="/img/article_img/Linux/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%953.png#pic_center" alt="系统调用的实现"></p>
 <h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><p>这里就不详细说明了，请参考<a href="https://auligey.github.io/2020/04/05/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/" target="_blank" rel="noopener">Linux发行版 CentOS编译内核</a></p>
-<hr>
 <h2 id="（4）测试系统调用"><a href="#（4）测试系统调用" class="headerlink" title="（4）测试系统调用"></a>（4）测试系统调用</h2><ol>
 <li>使用vim命令创建测试文件<code>mysyscall.c</code>和<code>mycall.c</code>，下面以mysyscall.c的创建和测试为例。执行命令：</li>
 </ol>
 <pre><code class="bash">vim mysyscall.c</code></pre>
-<p><img src="https://img-blog.csdnimg.cn/20200406233820378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="测试mysyscall"></p>
+<p><img src="/img/article_img/Linux/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%954.png#pic_center" alt="测试mysyscall"></p>
 <ol start="2">
 <li>使用gcc编译c程序文件<br><em>编译的四个阶段</em></li>
 </ol>
@@ -607,10 +609,10 @@
 <pre><code class="bash">gcc -o mysyscall_test mysyscall_test.c   #使用gcc编译</code></pre>
 <p>运行可执行文件，执行命令：</p>
 <pre><code class="bash">./mysyscall_test        # 运行可执行文件</code></pre>
-<p><img src="https://img-blog.csdnimg.cn/20200406234708504.png" alt="gcc编译测试文件并执行"><br>使用<code>dmesg</code>查看printk的输出情况。执行命令：</p>
+<p><img src="/img/article_img/Linux/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%955.png#pic_center" alt="gcc编译测试文件并执行"></p>
+<p>使用<code>dmesg</code>查看printk的输出情况。执行命令：</p>
 <pre><code class="bash">dmesg</code></pre>
-<p><img src="https://img-blog.csdnimg.cn/2020040623462720.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70" alt="dmesg输出情况"><br>系统调用的<strong>返回值</strong>和<strong>printk的输出</strong>均符合预期，系统调用成功添加了！</p>
-<hr>
+<p><img src="/img/article_img/Linux/CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%956.png#pic_center" alt="dmesg输出情况"><br>系统调用的<strong>返回值</strong>和<strong>printk的输出</strong>均符合预期，系统调用成功添加了！</p>
 <h1 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h1><ul>
 <li>两个字高度概括，<strong>简单！</strong></li>
 <li>剩下的你们自己慢慢写吧，有问题欢迎在留言区交流，谢谢观看。</li>
@@ -632,7 +634,7 @@
     <p><span class="copy-title">文章字数:</span><span class="post-count">830</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="故事的大大仙">故事的大大仙</a></p>
     <p><span class="copy-title">发布时间:</span>2020-04-07, 00:05:56</p>
-    <p><span class="copy-title">最后更新:</span>2020-06-12, 21:43:06</p>
+    <p><span class="copy-title">最后更新:</span>2020-07-27, 20:19:36</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/07/Linux_CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%95/" title="CentOS 7 添加一个简单的系统调用（内核编译法）">http://github.com/auligey/auligey.github.io/2020/04/07/Linux_CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%E6%B3%95/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。

@@ -372,7 +372,7 @@
         </a>
         
         <a  class="Linux "
-           href="/2020/04/23/Linux_CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E7%94%A8-%E6%A8%A1%E5%9D%97%E6%B3%95/"
+           href="/2020/04/23/Linux_CentOS7%E6%B7%BB%E5%8A%A0%E7%AE%80%E5%8D%95%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8_%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97%E6%B3%95/"
            data-tag="Linux,CentOS"
            data-author="江歌" >
             <span class="post-title" title="CentOS 7 添加一个简单的系统调用（内核模块法）">CentOS 7 添加一个简单的系统调用（内核模块法）</span>
@@ -452,7 +452,7 @@
         </a>
         
         <a  class="白嫖系列 "
-           href="/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97_xmind%208/"
+           href="/2020/04/04/%E7%99%BD%E5%AB%96%E7%B3%BB%E5%88%97_Xmind8/"
            data-tag="工具,白嫖"
            data-author="江歌" >
             <span class="post-title" title="白嫖系列——xmind 8">白嫖系列——xmind 8</span>
@@ -501,7 +501,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-06-12 21:43:09'>2020-04-05 14:28</time>
+        创建时间:<time class="date" title='更新时间: 2020-07-27 20:19:07'>2020-04-05 14:28</time>
         
     </div>
     <div class="article-meta">
@@ -553,28 +553,33 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><div class='inner-toc'><h2>目录</h2><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、实验目的"><span class="toc-text">一、实验目的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、环境准备"><span class="toc-text">二、环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、操作方法和步骤"><span class="toc-text">三、操作方法和步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（1）下载内核并解压"><span class="toc-text">（1）下载内核并解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（2）配置项"><span class="toc-text">（2）配置项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（3）编译内核"><span class="toc-text">（3）编译内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（4）安装"><span class="toc-text">（4）安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（5）重启虚拟机"><span class="toc-text">（5）重启虚拟机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、欠揍式总结（👊警告）"><span class="toc-text">四、欠揍式总结（👊警告）</span></a></li></ol></div></p>
-<hr>
-<h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><ol>
+<h1 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h1><blockquote>
+<ol>
 <li>学习怎样重新编译Linux内核。</li>
 <li>理解、掌握Linux标准内核和发行版本内核的区别。</li>
 </ol>
-<hr>
-<h1 id="二、环境准备"><a href="#二、环境准备" class="headerlink" title="二、环境准备"></a>二、环境准备</h1><p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p>
-<hr>
+</blockquote>
+<h1 id="二、环境准备"><a href="#二、环境准备" class="headerlink" title="二、环境准备"></a>二、环境准备</h1><blockquote>
+<p>虚拟机软件：Vmware Workstation<br>Linux发行版：CentOS 7  内置内核：linux 3.10.0<br>待编译内核：linux 4.15.10</p>
+</blockquote>
 <h1 id="三、操作方法和步骤"><a href="#三、操作方法和步骤" class="headerlink" title="三、操作方法和步骤"></a>三、操作方法和步骤</h1><ul>
-<li>编译过程很多地方需要root权限，为了方便，直接切换到root，切换命令：<pre><code class="bash">su root</code></pre>
-</li>
+<li>编译过程很多地方需要root权限，为了方便，直接切换到root，切换命令：</li>
+</ul>
+<pre><code class="bash">su root</code></pre>
+<ul>
 <li><strong>小提示</strong>：输入密码时不会显示，<code>$</code>表示一般用户，<code>#</code>表示超级管理员root，<code>Tab</code>键可以补全路径</li>
 </ul>
 <h2 id="（1）下载内核并解压"><a href="#（1）下载内核并解压" class="headerlink" title="（1）下载内核并解压"></a>（1）下载内核并解压</h2><ol>
 <li>使用浏览器打开<a href="http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/" target="_blank" rel="noopener">http://ftp.sjtu.edu.cn/sites/ftp.kernel.org/pub/linux/kernel/v4.x/</a></li>
 <li><code>Ctrl+F</code>查找linux-4.15.10.tar.gz，点击即可下载，我下载的位置是<code>/home/username/Downloads/linux-4.15.10.tar.gz</code></li>
-<li>使用<code>tar</code>命令解压文件：<pre><code class="c">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre>
-</li>
-<li>解压之后，切换工作目录：<pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre>
-</li>
+<li>使用<code>tar</code>命令解压文件：</li>
 </ol>
-<h2 id="（2）配置项"><a href="#（2）配置项" class="headerlink" title="（2）配置项"></a>（2）配置项</h2><p><strong>配置项的几种方式</strong></p>
+<pre><code class="c">tar xf ~/Downloads/linux-4.15.10.tar.gz -C /usr/src</code></pre>
+<ol start="4">
+<li>解压之后，切换工作目录：</li>
+</ol>
+<pre><code class="bash">cd /usr/src/linux-4.15.10/</code></pre>
+<h2 id="（2）配置项"><a href="#（2）配置项" class="headerlink" title="（2）配置项"></a>（2）配置项</h2><p>​    <strong>配置项的几种方式</strong></p>
 <ul>
 <li><code>make config</code>         基于文本的配置界面</li>
 <li><code>make menuconfig</code>    基于文本菜单的配置界面</li>
@@ -584,36 +589,45 @@
 <p><strong>本文采用基于文本菜单的配置界面（make menuconfig）</strong></p>
 <ul>
 <li>使用<code>make menuconfig</code>需要<code>ncurses-devel</code>的支持</li>
-<li>安装<code>ncurses-devel</code>命令：<pre><code class="bash">yum install ncurses-devel</code></pre>
-</li>
-<li>执行<code>make menuconfig</code>，开始选择配置项（<strong>注意终端窗口至少为19行，80列，否则报错提示</strong>）<pre><code class="bash">make menuconfig</code></pre>
-</li>
-<li>成功执行后，会出现下面的窗口：<br><img src="https://img-blog.csdnimg.cn/20200405135307329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70#pic_center" alt="menuconfig"></li>
+<li>安装<code>ncurses-devel</code>命令：</li>
+</ul>
+<pre><code class="bash">yum install ncurses-devel</code></pre>
+<ul>
+<li>执行<code>make menuconfig</code>，开始选择配置项（<strong>注意终端窗口至少为19行，80列，否则报错提示</strong>）</li>
+</ul>
+<pre><code class="bash">make menuconfig</code></pre>
+<ul>
+<li>成功执行后，会出现下面的窗口：<br><img src="/img/article_img/Linux/CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B81.png#pic_center" alt="menuconfig"></li>
 <li>直接<strong>保存退出</strong>就可以了，它会使用 CentOS 内部的配置文件作为这次编译的配置文件</li>
 </ul>
 <h2 id="（3）编译内核"><a href="#（3）编译内核" class="headerlink" title="（3）编译内核"></a>（3）编译内核</h2><ul>
-<li>编译需要<code>elfutils-libelf-devel</code> 和 <code>openssl-devel</code> 的支持，安装命令：<pre><code class="bash">yum install elfutils-libelf-devel openssl-devel</code></pre>
-</li>
-<li>使用<code>make</code>命令开始编译内核，可以使用多核线程提高编译速度：<pre><code class="bash">make -j4</code></pre>
-</li>
+<li>编译需要<code>elfutils-libelf-devel</code> 和 <code>openssl-devel</code> 的支持，安装命令：</li>
 </ul>
-<p><strong>emmm，编译时间很长(1小时左右，与电脑性能有关)，耐心等待</strong></p>
+<pre><code class="bash">yum install elfutils-libelf-devel openssl-devel</code></pre>
+<ul>
+<li>使用<code>make</code>命令开始编译内核，可以使用多核线程提高编译速度：</li>
+</ul>
+<pre><code class="bash">make -j4</code></pre>
+<p>​    <strong>emmm，编译时间很长(1小时左右，与电脑性能有关)，耐心等待</strong></p>
 <h2 id="（4）安装"><a href="#（4）安装" class="headerlink" title="（4）安装"></a>（4）安装</h2><ul>
 <li>漫长的等待之后，终于迎来了安装内核</li>
-<li>执行 <code>make modules_install</code> 开始安装模块：<pre><code class="bash">make modules_install</code></pre>
-</li>
-<li>等待几分钟，执行<code>make install</code> 开始安装核心：<pre><code class="bash">make install</code></pre>
-</li>
+<li>执行 <code>make modules_install</code> 开始安装模块：</li>
+</ul>
+<pre><code class="bash">make modules_install</code></pre>
+<ul>
+<li>等待几分钟，执行<code>make install</code> 开始安装核心：</li>
+</ul>
+<pre><code class="bash">make install</code></pre>
+<ul>
 <li>顺利安装完成，重启虚拟机看看</li>
 </ul>
 <h2 id="（5）重启虚拟机"><a href="#（5）重启虚拟机" class="headerlink" title="（5）重启虚拟机"></a>（5）重启虚拟机</h2><ul>
-<li><p>重启之后，进入grub界面，选择新编译的内核：<code>CentOS Linux （4.15.10）</code></p>
-</li>
-<li><p>进入桌面后，打开终端，使用<code>uname -a</code>查看内核版本：</p>
+<li>重启之后，进入grub界面，选择新编译的内核：<code>CentOS Linux （4.15.10）</code></li>
+<li>进入桌面后，打开终端，使用<code>uname -a</code>查看内核版本：</li>
+</ul>
 <pre><code class="bash">uname -sr</code></pre>
-</li>
-<li><p>实验做完了，才算完成了一半，<strong>还有实验报告没写！haha</strong></p>
-</li>
+<ul>
+<li>实验做完了，才算完成了一半，<strong>还有实验报告没写！haha</strong></li>
 </ul>
 <hr>
 <h1 id="四、欠揍式总结（👊警告）"><a href="#四、欠揍式总结（👊警告）" class="headerlink" title="四、欠揍式总结（👊警告）"></a>四、欠揍式总结（👊警告）</h1><ul>
@@ -637,7 +651,7 @@
     <p><span class="copy-title">文章字数:</span><span class="post-count">707</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="故事的大大仙">故事的大大仙</a></p>
     <p><span class="copy-title">发布时间:</span>2020-04-05, 14:28:12</p>
-    <p><span class="copy-title">最后更新:</span>2020-06-12, 21:43:09</p>
+    <p><span class="copy-title">最后更新:</span>2020-07-27, 20:19:07</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/05/Linux_CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/" title="CentOS 7 编译内核">http://github.com/auligey/auligey.github.io/2020/04/05/Linux_CentOS7%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
