@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>力扣刷题——单链表判断环路</title>
+      <link href="/2020/10/08/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98_%E5%8D%95%E9%93%BE%E8%A1%A8%E5%88%A4%E6%96%AD%E7%8E%AF%E8%B7%AF/"/>
+      <url>/2020/10/08/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98_%E5%8D%95%E9%93%BE%E8%A1%A8%E5%88%A4%E6%96%AD%E7%8E%AF%E8%B7%AF/</url>
+      
+        <content type="html"><![CDATA[<p>@[toc]</p><h1 id="1-题目要求"><a href="#1-题目要求" class="headerlink" title="1. 题目要求"></a>1. 题目要求</h1><blockquote><p>给定一个链表，如果它是有环链表，实现一个算法返回环路的开头节点。<br>有环链表的定义：在链表中某个节点的next元素指向在它前面出现过的节点，则表明该链表存在环路。</p><p><strong>题目链接：</strong> <a href="https://leetcode-cn.com/problems/linked-list-cycle-lcci" target="_blank" rel="noopener">https://leetcode-cn.com/problems/linked-list-cycle-lcci</a></p></blockquote><blockquote><p><strong>示例 1：</strong></p><p>输入：head = [3,2,0,-4], pos = 1<br>输出：tail connects to node index 1<br>解释：链表中有一个环，其尾部连接到第二个节点。</p><p><strong>示例 2：</strong></p><p>输入：head = [1,2], pos = 0<br>输出：tail connects to node index 0<br>解释：链表中有一个环，其尾部连接到第一个节点。</p><p><strong>示例 3：</strong></p><p>输入：head = [1], pos = -1<br>输出：no cycle<br>解释：链表中没有环。</p></blockquote><h1 id="2-解决思路"><a href="#2-解决思路" class="headerlink" title="2. 解决思路"></a>2. 解决思路</h1><p>试想，你偷了家里的零花钱，你爸发现了之后，准备追着你打。你和你爸只能沿着小区不停的跑，你的速度是你爸的2倍，但是在跑的过程中，两者是不能看到对方的，只有跑到一个地方相遇了之后，才能发现对方，然后你爸就逮住了你，后事自行想象……</p><p>我们假设你家周围的路有两种可能，一种是没有环路，一种是有环路。</p><ol><li>如果没有环路，那你爸肯定逮不住你。</li><li>如果有环路，那你爸会不会逮住你呢？下面我们就来看看，如果存在一个环路，你到底能否逃脱你爸的手心。</li></ol><p>答案是：你惨遭毒打。如果你俩都进入了环，你的速度又是你爸的2倍，所以你迟早会因为跑太快而追上你爸，所以你的毒打是自己二脚造成的。</p><p>下面具体分析一下整个过程吧：<br><img src="https://img-blog.csdnimg.cn/20201008202240587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1MTE2MDA5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p><p>也就是说，如果我们一开始用两个速度相差2倍的指针去遍历，如果有环的话，肯定会在C点相遇，就可以确定C点位置。</p><p>有了C点位置，结合最后一个式子可以知道，如果2人分别从A点和C点同时以相同速度出发，由于速度相同，所以相同时间内走过的距离肯定也是相同的，再加上最后一个等式，可以知道其中一个人到达B点的同时，另一个也刚好到B点，所以肯定也会在B点相遇。</p><h1 id="3-实现代码"><a href="#3-实现代码" class="headerlink" title="3. 实现代码"></a>3. 实现代码</h1><p>因为是单链表，所以一个结点肯定不会有环，所以要先判断一下。具体C++代码如下：</p><pre><code class="c++">/** * Definition for singly-linked list. * struct ListNode { *     int val; *     ListNode *next; *     ListNode(int x) : val(x), next(NULL) {} * }; */class Solution {public:    ListNode *detectCycle(ListNode *head) {        if (!head || !head-&gt;next)            return NULL;        ListNode *fast,*low;        fast = head;        low = head;        while(fast&amp;&amp;fast-&gt;next){            fast = fast-&gt;next-&gt;next;            low = low-&gt;next;            if (fast==low)                break;        }        if(fast!=low)            return NULL;        low = head;        while(fast!=low){            fast = fast-&gt;next;            low = low-&gt;next;        }        return fast;    }};</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 力扣 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 刷题 </tag>
+            
+            <tag> 力扣 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python多关键字排序问题</title>
       <link href="/2020/09/11/Python_%E5%A4%9A%E5%85%B3%E9%94%AE%E5%AD%97%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/"/>
       <url>/2020/09/11/Python_%E5%A4%9A%E5%85%B3%E9%94%AE%E5%AD%97%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98/</url>
       
-        <content type="html"><![CDATA[<p>@[toc]</p><h1 id="1-问题引入"><a href="#1-问题引入" class="headerlink" title="1. 问题引入"></a>1. 问题引入</h1><p>在排序问题中，经常会遇到使用<strong>多个关键字</strong>进行排序。比如说，按照字母顺序对一批学生姓名进行排序，如果第一个字母相同，则按照第二个字母顺序排序，以此类推。这就会导致，多个关键字出现时，怎么去<strong>协调关键字的顺序</strong>呢？</p><h1 id="2-解决思路"><a href="#2-解决思路" class="headerlink" title="2. 解决思路"></a>2. 解决思路</h1><p>我们先看看简单的2个关键字排序，有以下两种方式：</p><blockquote><ol><li>先进行第一关键字排序，再进行第二关键字排序；</li><li>先进行第二关键字排序，再进行第一关键字排序。</li></ol></blockquote><p>这两种排序顺序，结果会有什么不同吗？很显然，靠后面的关键字排序，可能会打乱前面关键字的排序。举个简单的例子就很容易理解了。</p><p><img src="/img/article_img/Python/%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90.jpg#pic_center" alt="举个栗子"></p><p>设列表 lst = [(2, 2), (1, 1), (1, 3)]，对该列表进行升序排序，如果第一个元素相同，则按照第二个元素升序排序。</p><p>很显然，第一关键字是第一个元素，第二关键字是第二个元素。</p><p><strong>方式一：先进行第一关键字排序，再进行第二关键字排序</strong></p><pre><code class="python">lst = [(2, 2), (3, 1), (1, 3)]lst.sort(key=lambda x: x[0])        # 先对第1个关键字排序lst.sort(key=lambda x: x[1])        # 再对第2个关键字排序print(lst)                # 输出的结果为[(1, 1), (2, 2), (1, 3)]</code></pre><p><strong>方式二：先进行第二关键字排序，再进行第一关键字排序</strong></p><pre><code class="python">lst = [(2, 2), (3, 1), (1, 3)]lst.sort(key=lambda x: x[1])        # 先对第2个关键字排序lst.sort(key=lambda x: x[0])        # 再对第1个关键字排序print(lst)                # 输出的结果为[(1, 1), (1, 3), (2, 2)]</code></pre><p>从上面的例子中可以看出，不同关键字顺序的排序方式导致了最终排序的结果也不同。</p><p><strong>方式二</strong>的排序方式才是我们想要的结果；<strong>方式一</strong>的结果为什么错了呢？原因是我们想要第一关键字进行排序，但是进行第二关键字排序时，打乱了第一关键字的排序方式，导致结果不符合我们的预期。</p><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>在进行多关键字排序时，如果是按照关键字分步进行排序时，按照<strong>关键字逆序</strong>的顺序进行排序，就能得到我们想要的结果了。比如由<strong>3个关键字</strong>，应该<strong>先进行第三关键字排序</strong>，<strong>再进行第二关键字排序</strong>，<strong>最后进行第一关键字排序</strong>。</p><p>到这里还未结束，因为我们使用的编程语言是Python，Python列表为我们提供的sort函数功能远不止此。一天天没事做，净整那些花里胡哨的，还有什么是一句Python代码不能搞定的 ：</p><pre><code class="python">lst.sort(key=lambda x: (x[0],x[1]))        # 直接按照顺序，第一关键字先，第二关键字后        </code></pre><p>如果由N个关键字，可以写成如下：</p><pre><code class="python">lst.sort(key=lambda x: (第1关键字 , 第2关键字 , ......))</code></pre><p>如果有帮助，还望少侠留下你的赞！感谢支持。</p>]]></content>
+        <content type="html"><![CDATA[<p>@[toc]</p><h1 id="1-问题引入"><a href="#1-问题引入" class="headerlink" title="1. 问题引入"></a>1. 问题引入</h1><p>在排序问题中，经常会遇到使用<strong>多个关键字</strong>进行排序。比如说，按照字母顺序对一批学生姓名进行排序，如果第一个字母相同，则按照第二个字母顺序排序，以此类推。这就会导致，多个关键字出现时，怎么去<strong>协调关键字的顺序</strong>呢？</p><h1 id="2-解决思路"><a href="#2-解决思路" class="headerlink" title="2. 解决思路"></a>2. 解决思路</h1><p>我们先看看简单的2个关键字排序，有以下两种方式：</p><blockquote><ol><li>先进行第一关键字排序，再进行第二关键字排序；</li><li>先进行第二关键字排序，再进行第一关键字排序。</li></ol></blockquote><p>这两种排序顺序，结果会有什么不同吗？很显然，靠后面的关键字排序，可能会打乱前面关键字的排序。举个简单的例子就很容易理解了。</p><p><img src="/img/article_img/Python/%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90.jpg#pic_center" alt="举个栗子"></p><p>设列表 lst = [(2, 2), (1, 1), (1, 3)]，对该列表进行升序排序，如果第一个元素相同，则按照第二个元素升序排序。</p><p>很显然，第一关键字是第一个元素，第二关键字是第二个元素。</p><p><strong>方式一：先进行第一关键字排序，再进行第二关键字排序</strong></p><pre><code class="python">lst = [(2, 2), (3, 1), (1, 3)]lst.sort(key=lambda x: x[0])        # 先对第1个关键字排序lst.sort(key=lambda x: x[1])        # 再对第2个关键字排序print(lst)                # 输出的结果为[(1, 1), (2, 2), (1, 3)]</code></pre><p><strong>方式二：先进行第二关键字排序，再进行第一关键字排序</strong></p><pre><code class="python">lst = [(2, 2), (3, 1), (1, 3)]lst.sort(key=lambda x: x[1])        # 先对第2个关键字排序lst.sort(key=lambda x: x[0])        # 再对第1个关键字排序print(lst)                # 输出的结果为[(1, 1), (1, 3), (2, 2)]</code></pre><p>从上面的例子中可以看出，不同关键字顺序的排序方式导致了最终排序的结果也不同。</p><p><strong>方式二</strong>的排序方式才是我们想要的结果；</p><p><strong>方式一</strong>的结果为什么错了呢？原因是我们想要第一关键字进行排序，但是进行第二关键字排序时，打乱了第一关键字的排序方式，导致结果不符合我们的预期。</p><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h1><p>在进行多关键字排序时，如果是按照关键字分步进行排序时，按照<strong>关键字逆序</strong>的顺序进行排序，就能得到我们想要的结果了。比如由<strong>3个关键字</strong>，应该<strong>先进行第三关键字排序</strong>，<strong>再进行第二关键字排序</strong>，<strong>最后进行第一关键字排序</strong>。</p><p>到这里还未结束，因为我们使用的编程语言是Python，Python列表为我们提供的sort函数功能远不止此。一天天没事做，净整那些花里胡哨的，还有什么是一句Python代码不能搞定的 ：</p><pre><code class="python">lst.sort(key=lambda x: (x[0],x[1]))        # 直接按照顺序，第一关键字先，第二关键字后        </code></pre><p>如果由N个关键字，可以写成如下：</p><pre><code class="python">lst.sort(key=lambda x: (第1关键字 , 第2关键字 , ......))</code></pre><p>End！</p>]]></content>
       
       
       <categories>
